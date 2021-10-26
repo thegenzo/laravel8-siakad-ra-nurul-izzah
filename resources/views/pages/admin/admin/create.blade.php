@@ -3,8 +3,7 @@
 @section('title', 'Tambah Admin')
 
 @push('addon-style')
-<!-- CSS Libraries -->
-<link rel="stylesheet" href="{{ asset('/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+
 @endpush
 
 @section('content')
@@ -108,13 +107,5 @@
 @endsection
 
 @push('addon-script')
-<!-- JS Libraies -->
-<script src="{{ asset('/node_modules/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('/node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $("#datatable").dataTable();
-    });
-</script>
+
 @endpush
