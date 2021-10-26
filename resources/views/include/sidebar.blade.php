@@ -8,11 +8,11 @@
     </div>
     <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown {{ Request::is('dashboard') || Request::is('admin-dashboard') ? ' active' : '' }}">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           <ul class="dropdown-menu">
-            <li class="active"><a class="nav-link" href="index-0.html">General Dashboard</a></li>
-            <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+            <li class="{{ Request::is('dashboard') ? ' active' : '' }}"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+            <li class="{{ Request::is('admin-dashboard') ? ' active' : '' }}"><a class="nav-link" href="/admin-dashboard">Admin Dashboard</a></li>
           </ul>
         </li>
         <li class="menu-header">Starter</li>
