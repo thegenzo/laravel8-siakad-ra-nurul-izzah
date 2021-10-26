@@ -27,7 +27,7 @@ class CreateGurusTable extends Migration
 
             // relasi tabel gurus dan kelas
             $table->unsignedBigInteger('id_kelas');
-            $table->foreignKey('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
             
             $table->timestamps();
         });
