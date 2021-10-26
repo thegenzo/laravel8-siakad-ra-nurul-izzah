@@ -28,6 +28,8 @@
   @include('include.script')
 
   @stack('addon-script')
+
+  @include('sweetalert::alert')
   
 </body>
 </html>

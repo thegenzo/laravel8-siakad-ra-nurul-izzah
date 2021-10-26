@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kepsek;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -99,7 +100,7 @@ class KepsekController extends Controller
             
         }
         else {
-            $foto = 'uploads/default.png';
+            $foto = 'uploads/kepsek/default.png';
 
             $user = User::create([
                 'name' => $request->name,
@@ -115,7 +116,8 @@ class KepsekController extends Controller
             Kepsek::create(array_merge($input, ['id_user' => $user->id]));
         }
 
-        return redirect()->route('kepsek.index')->with('success', 'Kepala Sekolah Berhasil Ditambahkan');
+        Alert::success('Berhasil', 'Kepala Sekolah Berhasil Dibuat');
+        return redirect('/kepsek');
 
     }
 
@@ -187,7 +189,8 @@ class KepsekController extends Controller
         $user->name = $request->name;
         $user->save();
 
-        return redirect()->route('user.index')->with('success', 'Kepsek Berhasil Diubah');
+        Alert::success('Berhasil', 'Kepala Sekolah Berhasil Diedit');
+        return redirect('/kepsek');
     }
 
     /**
@@ -202,6 +205,7 @@ class KepsekController extends Controller
         $user = User::where('id', $kepsek->id_user)->delete();
         $kepsek->delete();
 
-        return redirect()->route('user.index')->with('success', 'Kepsek Berhasil Dihapus');
+        Alert::success('Berhasil', 'Kepala Sekolah Berhasil Dihapus');
+        return redirect('/kepsek');
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Hari;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Guru;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -75,7 +76,8 @@ class JadwalController extends Controller
         $data = $request->all();
         Jadwal::create($data);
 
-        return redirect()->back()->with('success', 'Jadwal Berhasil Ditambahkan');
+        Alert::success('Berhasil', 'Jadwal Berhasil Ditambahkan');
+        return redirect('/jadwal');
     }
 
     /**
@@ -145,7 +147,8 @@ class JadwalController extends Controller
         $data = $request->all();
         $jadwal->update($data);
 
-        return redirect()->route('jadwal.index')->with('success', 'Jadwal Berhasil Diedit');
+        Alert::success('Berhasil', 'Jadwal Berhasil Diubah');
+        return redirect('/jadwal');
     }
 
     /**
@@ -159,6 +162,7 @@ class JadwalController extends Controller
         $jadwal = Jadwal::find($id);
         $jadwal->delete();
 
-        return redirect()->route('jadwal.index')->with('success', 'Jadwal Berhasil Dihapus');
+        Alert::success('Berhasil', 'Jadwal Berhasil Dihapus');
+        return redirect('/jadwal');
     }
 }

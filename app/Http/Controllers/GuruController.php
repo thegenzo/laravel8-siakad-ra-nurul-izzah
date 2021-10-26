@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\Guru;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -109,7 +110,7 @@ class GuruController extends Controller
             
         }
         else {
-            $foto = 'uploads/default.png';
+            $foto = 'uploads/guru/default.png';
 
             $user = User::create([
                 'name' => $request->name,
@@ -125,7 +126,8 @@ class GuruController extends Controller
             Guru::create(array_merge($input, ['id_user' => $user->id]));
         }
 
-        return redirect()->back()->with('success', 'Guru Berhasil Ditambahkan');
+        Alert::success('Berhasil', 'Guru Berhasil Ditambahkan');
+        return redirect('/guru');
     }
 
     /**
@@ -202,7 +204,8 @@ class GuruController extends Controller
         $user->name = $request->name;
         $user->save();
 
-        return redirect()->route('guru.index')->with('success', 'Guru Berhasil Diubah');
+        Alert::success('Berhasil', 'Guru Berhasil Diubah');
+        return redirect('/guru');
     }
 
     /**
@@ -215,20 +218,26 @@ class GuruController extends Controller
     {
         $guru = Guru::find($id);
         if($guru->jadwal()->count()) {
-            return redirect()->back()->with('error', 'Guru Memiliki Data Terkait dengan Jadwal');
+            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Jadwal');
+            return back();
         } else if($guru->nilai()->count()) {
-            return redirect()->back()->with('error', 'Guru Memiliki Data Terkait dengan Nilai Murid');
+            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Nilai Murid');
+            return back();
         } else if ($guru->sikap()->count()) {
-            return redirect()->back()->with('error', 'Guru Memiliki Data Terkait dengan Sikap Murid');
+            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Sikap Murid');
+            return back();
         } else if ($guru->rapor()->count()) {
-            return redirect()->back()->with('error', 'Guru Memiliki Data Terkait dengan Rapor Murid');
+            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Rapor Murid');
+            return back();
         } else if ($guru->ekskul()->count()) {
-            return redirect()->back()->with('error', 'Guru Memiliki Data Terkait dengan Ekskul Murid');
+            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Ekskul Murid');
+            return back();
         } else {
             $user = User::where('id', $guru->id_user)->delete();
             $guru->delete();
     
-            return redirect()->route('guru.index')->with('success', 'Guru Berhasil Dihapus');
+            Alert::success('Berhasil', 'Guru Berhasil Dihapus');
+            return redirect('/guru');
         }
 
     }

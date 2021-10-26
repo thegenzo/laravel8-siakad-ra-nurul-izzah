@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Murid;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -115,7 +116,7 @@ class MuridController extends Controller
             
         }
         else {
-            $foto = 'uploads/default.png';
+            $foto = 'uploads/murid/default.png';
 
             $user = User::create([
                 'name' => $request->name,
@@ -131,7 +132,8 @@ class MuridController extends Controller
             Murid::create(array_merge($input, ['id_user' => $user->id]));
         }
 
-        return redirect()->back()->with('success', 'Murid Berhasil Ditambahkan');
+        Alert::success('Berhasil', 'Murid Berhasil Ditambahkan');
+        return redirect('/murid');
 
     }
 
@@ -217,7 +219,8 @@ class MuridController extends Controller
         $user->name = $request->name;
         $user->save();
 
-        return redirect()->route('murid.index')->with('success', 'Murid Berhasil Diubah');
+        Alert::success('Berhasil', 'Murid Berhasil Diedit');
+        return redirect('/murid');
     }
 
     /**
@@ -230,18 +233,23 @@ class MuridController extends Controller
     {
         $murid = Murid::find($id);
         if($murid->nilai()->count()) {
-            return redirect()->back()->with('error', 'Murid Memiliki Data Terkait dengan Nilai Murid');
+            Alert::error('Gagal', 'Murid Memiliki Data Terkait dengan Nilai Murid');
+            return back();
         } else if ($murid->sikap()->count()) {
-            return redirect()->back()->with('error', 'Murid Memiliki Data Terkait dengan Sikap Murid');
+            Alert::error('Gagal', 'Murid Memiliki Data Terkait dengan Sikap Murid');
+            return back();
         } else if ($murid->rapor()->count()) {
-            return redirect()->back()->with('error', 'Murid Memiliki Data Terkait dengan Rapor Murid');
+            Alert::error('Gagal', 'Murid Memiliki Data Terkait dengan Rapor Murid');
+            return back();
         } else if ($murid->ekskul()->count()) {
-            return redirect()->back()->with('error', 'Murid Memiliki Data Terkait dengan Ekskul Murid');
+            Alert::error('Gagal', 'Murid Memiliki Data Terkait dengan Ekskul Murid');
+            return back();
         } else {
             $user = User::where('id', $murid->id_user)->delete();
             $murid->delete();
     
-            return redirect()->route('murid.index')->with('success', 'Murid Berhasil Dihapus');
+            Alert::success('Berhasil', 'Murid Berhasil Dihapus');
+            return redirect('/murid');
         }
     }
 }

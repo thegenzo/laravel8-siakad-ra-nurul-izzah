@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Admin;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -18,7 +19,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admin = Admin::with('user')->orderBy('user.name', 'asc')->get();
+        $admin = Admin::with('user')->orderBy('id_user', 'asc')->get();
 
         return view('pages.admin.admin.index', compact('admin'));
     }
@@ -78,6 +79,10 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
+        $options = [
+            'cost' => 11 // parameter untuk algoritma enkripsi BLOWFISH
+        ];
+
         if($request->avatar) {
             // proses mengupload foto profil
             $image = $request->file('avatar');
@@ -89,7 +94,7 @@ class AdminController extends Controller
                 'avatar' => $imageName,
                 'email' => $request->email,
                 'level' => 'admin',
-                'password' => password_hash($request->password, BCRYPT_BLOWFISH),
+                'password' => password_hash($request->password, PASSWORD_BCRYPT, $options),
                 'konfirmasi_password' => $request->konfirmasi_password
             ]);
     
@@ -99,14 +104,14 @@ class AdminController extends Controller
             
         }
         else {
-            $foto = 'uploads/default.png';
+            $foto = 'default.png';
 
             $user = User::create([
                 'name' => $request->name,
                 'avatar' => $foto,
                 'email' => $request->email,
                 'level' => 'admin',
-                'password' => password_hash($request->password, BCRYPT_BLOWFISH),
+                'password' => password_hash($request->password, PASSWORD_BCRYPT, $options),
                 'konfirmasi_password' => $request->konfirmasi_password
             ]);
     
@@ -115,7 +120,8 @@ class AdminController extends Controller
             Admin::create(array_merge($input, ['id_user' => $user->id]));
         }
 
-        return redirect()->route('admin.index')->with('success', 'Admin Berhasil Ditambahkan');
+        Alert::success('Berhasil', 'Admin Berhasil Ditambahkan');
+        return redirect('admin');
     }
 
     /**
@@ -185,7 +191,8 @@ class AdminController extends Controller
         $user->name = $user->name;
         $user->save();
 
-        return redirect()->route('admin.index')->with('success', 'Admin Berhasil Diubah');
+        Alert::success('Berhasil', 'Admin Berhasil Diubah');
+        return redirect('/admin');
 
     }
 
@@ -198,10 +205,11 @@ class AdminController extends Controller
     public function destroy($id)
     {
         $admin = Admin::find($id);
-
+        
         $user = User::where('id', $admin->id_user)->delete();
         $admin->delete();
 
-        return redirect()->route('admin.index')->with('success', 'Admin Berhasil Dihapus');
+        Alert::success('Berhasil', 'Admin Berhasil Dihapus');
+        return redirect('/admin');
     }
 }

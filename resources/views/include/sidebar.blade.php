@@ -15,11 +15,11 @@
             <li class="{{ Request::is('admin-dashboard') ? ' active' : '' }}"><a class="nav-link" href="/admin-dashboard">Admin Dashboard</a></li>
           </ul>
         </li>
-        <li class="menu-header">Starter</li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
+        <li class="menu-header">Data Master</li>
+        <li class="nav-item dropdown {{ Request::is('admin') || Request::is('guru') || Request::is('murid') || Request::is('kepsek') ? ' active' : '' }}">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Master</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
+            <li class="{{ Request::is('admin') ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.index') }}">Admin</a></li>
             <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
             <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
           </ul>
