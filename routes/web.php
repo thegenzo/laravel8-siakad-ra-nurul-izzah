@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/admin-dashboard', [DashboardController::class, 'adminDashboard']);
 
-Route::view('/', 'pages.home');
+Route::resource('admin', AdminController::class);
