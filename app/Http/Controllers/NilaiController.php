@@ -8,6 +8,7 @@ use App\Models\Murid;
 use App\Models\Kelas;
 use App\Models\Guru;
 use App\Models\Mapel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;

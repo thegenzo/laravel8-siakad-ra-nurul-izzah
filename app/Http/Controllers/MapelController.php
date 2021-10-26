@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mapel;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -57,7 +58,8 @@ class MapelController extends Controller
         $data = $request->all();
         Mapel::create($data);
 
-        return redirect()->back()->with('success', 'Mapel Berhasil Ditambahkan');
+        Alert::success('Berhasil', 'Mapel Berhasil Ditambahkan');
+        return redirect('/mapel');
     }
 
     /**
@@ -111,7 +113,8 @@ class MapelController extends Controller
         $mapel = Mapel::find($id);
         $mapel->update($data);
 
-        return redirect()->back()->with('success', 'Mapel Berhasil Diedit');
+        Alert::success('Berhasil', 'Mapel Berhasil Diubah');
+        return redirect('/mapel');
     }
 
     /**
@@ -124,17 +127,22 @@ class MapelController extends Controller
     {
         $mapel = Mapel::find($id);
         if($mapel->jadwal()->count()) {
-            return redirect()->back()->with('error', 'Mapel Memiliki Data Terkait dengan Jadwal');
+            Alert::error('Gagal', 'Mapel Memiliki Data Terkait dengan Jadwal');
+            return back();
         } else if ($mapel->nilai()->count()) {
-            return redirect()->back()->with('error', 'Mapel Memiliki Data Terkait dengan Nilai Murid');
+            Alert::error('Gagal', 'Mapel Memiliki Data Terkait dengan Nilai Murid');
+            return back();
         } else if ($mapel->sikap()->count()) {
-            return redirect()->back()->with('error', 'Mapel Memiliki Data Terkait dengan Sikap Murid');
+            Alert::error('Gagal', 'Mapel Memiliki Data Terkait dengan Sikap Murid');
+            return back();
         } else if ($mapel->rapor()->count()) {
-            return redirect()->back()->with('error', 'Mapel Memiliki Data Terkait dengan Rapor Murid');
+            Alert::error('Gagal', 'Mapel Memiliki Data Terkait dengan Rapor Murid');
+            return back();
         } else {
             $mapel->delete();
 
-            return redirect()->back()->with('success', 'Mapel Berhasil Dihapus');
+            Alert::success('Berhasil', 'Mapel Berhasil Dihapus');
+            return redirect('/mapel');
         }
 
     }

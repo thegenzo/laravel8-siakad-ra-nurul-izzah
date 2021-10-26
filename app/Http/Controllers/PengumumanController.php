@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengumuman;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use Illuminate\Validation\Rule;
@@ -37,6 +38,7 @@ class PengumumanController extends Controller
         $data = $request->all();
         $pengumuman->update($data);
 
-        return redirect()->back()->with('success', 'Pengumuman Berhasil Disunting');
+        Alert::success('Berhasil', 'Pengumuman Berhasil Diubah');
+        return redirect('/pengumuman');
     }
 }
