@@ -20,6 +20,7 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Master</span></a>
           <ul class="dropdown-menu">
             <li class="{{ Request::is('admin') ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.index') }}">Admin</a></li>
+            <li class="{{ Request::is('guru') ? ' active' : '' }}"><a class="nav-link" href="{{ route('guru.index') }}">Guru</a></li>
             <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
             <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
           </ul>

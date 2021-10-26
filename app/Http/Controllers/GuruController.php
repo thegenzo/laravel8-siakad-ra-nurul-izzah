@@ -27,7 +27,7 @@ class GuruController extends Controller
     public function kelas($id)
     {
         $kelas = Kelas::find($id);
-        $guru = Guru::with('user')->where('id_kelas', $id)-orderBy('user.name', 'asc')->get();
+        $guru = Guru::with('kelas')->where('id_kelas', $id)->orderBy('id_kelas', 'asc')->get();
 
         return view('pages.admin.guru.kelas', compact('kelas', 'guru'));
     }
