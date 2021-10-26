@@ -39,7 +39,9 @@ class GuruController extends Controller
      */
     public function create()
     {
-        //
+        $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
+
+        return view('pages.admin.guru.create', compact('kelas'));
     }
 
     /**
@@ -89,6 +91,10 @@ class GuruController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
+        $options = [
+            'cost' => 11 // parameter untuk algoritma enkripsi BLOWFISH
+        ];
+
         if($request->avatar) {
             // proses mengupload foto profil
             $image = $request->file('avatar');
@@ -100,7 +106,7 @@ class GuruController extends Controller
                 'avatar' => $imageName,
                 'email' => $request->email,
                 'level' => 'guru',
-                'password' => password_hash($request->password, BCRYPT_BLOWFISH),
+                'password' => password_hash($request->password, PASSWORD_BCRYPT, $options),
                 'konfirmasi_password' => $request->konfirmasi_password
             ]);
     
@@ -110,14 +116,14 @@ class GuruController extends Controller
             
         }
         else {
-            $foto = 'uploads/guru/default.png';
+            $foto = 'default.png';
 
             $user = User::create([
                 'name' => $request->name,
                 'avatar' => $foto,
                 'email' => $request->email,
                 'level' => 'guru',
-                'password' => password_hash($request->password, BCRYPT_BLOWFISH),
+                'password' => password_hash($request->password, PASSWORD_BCRYPT, $options),
                 'konfirmasi_password' => $request->konfirmasi_password
             ]);
     
