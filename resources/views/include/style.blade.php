@@ -6,4 +6,6 @@
 <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('/assets/css/components.css') }}">
 
-<link rel="stylesheet" href="{{ asset('/node_modules/izitoast/dist/css/iziToast.min.css') }}">
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+

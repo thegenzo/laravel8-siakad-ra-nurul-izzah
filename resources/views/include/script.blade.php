@@ -10,5 +10,5 @@
 <script src="{{ asset('/assets/js/scripts.js') }}"></script>
 <script src="{{ asset('/assets/js/custom.js') }}"></script>
 
-<!-- JS Libraies -->
-<script src="{{ asset('/node_modules/izitoast/dist/js/iziToast.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>

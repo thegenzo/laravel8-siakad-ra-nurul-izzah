@@ -63,11 +63,11 @@
                             <a href="{{ route('admin.edit', $data->id) }} " class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
                                 <i class="fa fa-pencil-alt" ></i>
                             </a>
-                            <form action="{{ route('admin.destroy', $data->id)}} " method="POST" class="d-inline" onsubmit="return confirm('Yakin Hapus Data?')">
+                            <form action="{{ route('admin.destroy', $data->id) }}" method="POST" class="d-inline swal-confirm">
                               @csrf
-                              @method('delete')
-                              <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus">
-                                <i class="fas fa-trash"></i>
+                              @method('DELETE')
+                              <button class="btn btn-danger swal-confirm" type="submit" data-id="{{ $data->id }}">
+                                  <i class="fas fa-trash swal-confirm"></i>
                               </button>
                             </form>
                         </td>
@@ -95,7 +95,29 @@
 <script>
     $(document).ready(function() {
         $("#datatable").dataTable();
-    });
 
+        $('.swal-confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var id = $(this).data("id");
+          event.preventDefault();
+          swal({
+              title: `Yakin Hapus Data?`,
+              text: "Data yang terhapus tidak dapat dikembalikan",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Ya, hapus',
+          })
+          .then((willDelete) => {
+              if (willDelete) {
+              form.submit();
+              }
+          });
+      });
+
+    });
 </script>
 @endpush
