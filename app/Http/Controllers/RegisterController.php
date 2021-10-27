@@ -23,7 +23,6 @@ class RegisterController extends Controller
     {
         $rules = [
             'name'                  => 'required',
-            'avatar'                => 'image|mimes:jpeg,png,jpg,svg',
             'email'                 => 'required|email|unique:users',
             'password'              => 'required|min:8|same:konfirmasi_password',
             'konfirmasi_password'   => 'required|min:8',
@@ -39,7 +38,6 @@ class RegisterController extends Controller
 
         $messages = [
             'name.required'                 => 'Nama Wajib Diisi',
-            'avatar.mimes'                  => 'Foto harus berformat gambar (jpeg, png, jpg atau svg)',
             'email.required'                => 'Email wajib diisi',
             'email.email'                   => 'Email tidak valid',
             'email.unique'                  => 'Email sudah terdaftar',
@@ -106,7 +104,7 @@ class RegisterController extends Controller
             Murid::create(array_merge($input, ['id_user' => $user->id]));
         }
 
-        Alert::success('Berhasil', 'Murid Berhasil Ditambahkan');
-        return redirect('/murid');
+        Alert::success('Berhasil', 'Registrasi Murid Berhasil, Silahkan Login');
+        return redirect('/login');
     }
 }
