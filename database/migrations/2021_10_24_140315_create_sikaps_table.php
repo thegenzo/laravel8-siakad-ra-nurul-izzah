@@ -32,9 +32,9 @@ class CreateSikapsTable extends Migration
             $table->unsignedBigInteger('id_mapel');
             $table->foreign('id_mapel')->references('id')->on('mapels')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('sikap1');
-            $table->integer('sikap2');
-            $table->integer('sikap3');
+            $table->string('sikap1');
+            $table->string('sikap2');
+            $table->string('sikap3');
             $table->timestamps();
         });
     }
