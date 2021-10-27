@@ -9,6 +9,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\SikapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,6 @@ Route::post('/pengumuman', [PengumumanController::class, 'update'])->name('pengu
 Route::resource('nilai', NilaiController::class);
 Route::get('/nilai/kelas/{id}', [NilaiController::class, 'kelas'])->name('nilai.kelas');
 Route::get('/nilai/murid/{id}', [NilaiController::class, 'murid'])->name('nilai.murid');
+Route::resource('sikap', SikapController::class);
+Route::get('/sikap/kelas/{id}', [SikapController::class, 'kelas'])->name('sikap.kelas');
+Route::get('/sikap/murid/{id}', [SikapController::class, 'murid'])->name('sikap.murid');
