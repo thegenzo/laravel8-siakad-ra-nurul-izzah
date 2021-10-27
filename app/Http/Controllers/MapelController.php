@@ -30,7 +30,7 @@ class MapelController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.mapel.create');
     }
 
     /**
@@ -144,6 +144,5 @@ class MapelController extends Controller
             Alert::success('Berhasil', 'Mapel Berhasil Dihapus');
             return redirect('/mapel');
         }
-
     }
 }

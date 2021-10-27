@@ -7,7 +7,6 @@
       <a href="index.html">St</a>
     </div>
     <ul class="sidebar-menu">
-        <li class="menu-header">Dashboard</li>
         <li class="nav-item dropdown {{ Request::is('dashboard') || Request::is('admin-dashboard') ? ' active' : '' }}">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           <ul class="dropdown-menu">
@@ -15,17 +14,17 @@
             <li class="{{ Request::is('admin-dashboard') ? ' active' : '' }}"><a class="nav-link" href="/admin-dashboard">Admin Dashboard</a></li>
           </ul>
         </li>
-        <li class="menu-header">Data Master</li>
         <li class="nav-item dropdown {{ Request::is('admin') || Request::is('guru') || Request::is('murid') || Request::is('kepsek') ? ' active' : '' }}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Master</span></a>
           <ul class="dropdown-menu">
             <li class="{{ Request::is('admin') ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.index') }}">Admin</a></li>
             <li class="{{ Request::is('guru') ? ' active' : '' }}"><a class="nav-link" href="{{ route('guru.index') }}">Guru</a></li>
             <li class="{{ Request::is('murid') ? ' active' : '' }}"><a class="nav-link" href="{{ route('murid.index') }}">Murid</a></li>
-            <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-            <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
+            <li class="{{ Request::is('mapel') ? ' active' : '' }}"><a class="nav-link" href="{{ route('mapel.index') }}">Mapel</a></li>
+            <li class="{{ Request::is('jadwal') ? ' active' : '' }}"><a class="nav-link" href="{{ route('jadwal.index') }}">Jadwal</a></li>
           </ul>
         </li>
+        <li class="{{ Request::is('pengumuman') ? ' active' : '' }}"><a class="nav-link" href="/pengumuman"><i class="fas fa-pencil-ruler"></i> <span>Pengumuman</span></a></li>
         <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>

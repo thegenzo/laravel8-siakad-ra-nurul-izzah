@@ -3,8 +3,7 @@
 @section('title', 'Guru')
 
 @push('addon-style')
-<!-- CSS Libraries -->
-<link rel="stylesheet" href="{{ asset('/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+
 @endpush
 
 @section('content')
@@ -67,36 +66,5 @@
 @endsection
 
 @push('addon-script')
-<!-- JS Libraies -->
-<script src="{{ asset('/node_modules/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('/node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $("#datatable").dataTable();
 
-        $('.swal-confirm').click(function(event) {
-          var form =  $(this).closest("form");
-          var id = $(this).data("id");
-          event.preventDefault();
-          swal({
-              title: `Yakin Hapus Data?`,
-              text: "Data yang terhapus tidak dapat dikembalikan",
-              icon: "warning",
-              buttons: true,
-              dangerMode: true,
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Ya, hapus',
-          })
-          .then((willDelete) => {
-              if (willDelete) {
-              form.submit();
-              }
-          });
-      });
-
-    });
-</script>
 @endpush

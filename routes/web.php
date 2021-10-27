@@ -5,7 +5,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\MuridController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\PengumumanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +27,8 @@ Route::resource('guru', GuruController::class);
 Route::get('/guru/kelas/{id}', [GuruController::class, 'kelas'])->name('guru.kelas');
 Route::resource('murid', MuridController::class);
 Route::get('/murid/kelas/{id}', [MuridController::class, 'kelas'])->name('murid.kelas');
+Route::resource('mapel', MapelController::class);
 Route::resource('jadwal', JadwalController::class);
+Route::get('/jadwal/kelas/{id}', [JadwalController::class, 'kelas'])->name('jadwal.kelas');
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
+Route::post('/pengumuman', [PengumumanController::class, 'update'])->name('pengumuman.update');

@@ -30,6 +30,6 @@ class Jadwal extends Model
 
     public function guru()
     {
-        return $this->belongsTo(Kelas::class, 'id_guru');
+        return $this->belongsTo(Guru::class, 'id_guru');
     }
 }

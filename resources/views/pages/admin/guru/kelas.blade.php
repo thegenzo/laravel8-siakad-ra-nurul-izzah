@@ -79,6 +79,7 @@ Data Guru Kelas {{$kelas->nama_kelas}}
             </table>
           </div>
         </div>
+        <a href="{{ url()->previous() }}" class="btn btn-md btn-warning">Kembali</a>
       </div>
     </div>
   </section>

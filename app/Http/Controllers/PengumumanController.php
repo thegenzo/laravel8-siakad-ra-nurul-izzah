@@ -18,7 +18,7 @@ class PengumumanController extends Controller
         return view('pages.admin.pengumuman.index', compact('pengumuman'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $rules = [
             'isi_pengumuman'            => 'required',
@@ -34,7 +34,7 @@ class PengumumanController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
 
-        $pengumuman = Pengumuman::find($id);
+        $pengumuman = Pengumuman::where('id', 1)->first();
         $data = $request->all();
         $pengumuman->update($data);
 

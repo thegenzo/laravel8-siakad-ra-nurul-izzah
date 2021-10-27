@@ -20,7 +20,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="card">
+      <div class="col-lg-12 col-md-6 col-12 col-sm-6">
+        <div class="card">
           <div class="card-header">
               <h4>Detail Murid</h4>
           </div>
@@ -46,6 +47,7 @@
             </div>
             <a href="{{ url()->previous() }}" class="btn btn-warning">Kembali</a>
           </div>
+       </div>
       </div>
     </div>
   </section>

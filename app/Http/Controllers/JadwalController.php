@@ -24,12 +24,19 @@ class JadwalController extends Controller
     {
         $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
 
-        $hari = Hari::all();
-        $mapel = Mapel::all();
-        $guru = Guru::with('user')->orderBy('user.name', 'asc')->get();
-
-        return view('pages.admin.jadwal.index', compact('kelas', 'hari', 'mapel', 'guru'));
+        return view('pages.admin.jadwal.index', compact('kelas'));
     }
+
+    public function kelas($id)
+    {
+        $kelas = Kelas::find($id);
+
+        $jadwal = Jadwal::with('guru')->where('id_kelas', $kelas->id)->orderBy('id_kelas', 'asc')->get();
+
+        return view('pages.admin.jadwal.kelas', compact('kelas', 'jadwal'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +45,12 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        $kelas = Kelas::all();
+        $hari = Hari::all();
+        $mapel = Mapel::all();
+        $guru = Guru::with('user')->orderBy('id_user', 'asc')->get();
+
+        return view('pages.admin.jadwal.create', compact('hari', 'mapel', 'guru', 'kelas'));
     }
 
     /**
@@ -105,7 +117,7 @@ class JadwalController extends Controller
 
         $hari = Hari::all();
         $mapel = Mapel::all();
-        $guru = Guru::with('user')->orderBy('user.name', 'asc')->get();
+        $guru = Guru::with('user')->orderBy('id_user', 'asc')->get();
 
         return view('pages.admin.jadwal.edit', compact('jadwal', 'kelas', 'hari', 'mapel', 'guru'));
     }

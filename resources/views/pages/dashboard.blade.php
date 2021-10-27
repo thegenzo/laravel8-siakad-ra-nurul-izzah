@@ -25,14 +25,16 @@
                     <tr>
                         <th>Jam Pelajaran</th>
                         <th>Mata Pelajaran</th>
+                        <th>Guru</th>
                         <th>Kelas</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($jadwal as $data)
                     <tr>
-                        <td>{{ $data->jam_masuk }} - {{ $data->jam_keluar }}</td>
+                        <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
                         <td>{{ $data->mapel->nama_mapel }}</td>
+                        <td>{{ $data->guru->user->name }}</td>
                         <td>{{ $data->kelas->nama_kelas }}</td>
                     </tr>
                     @empty
@@ -54,7 +56,7 @@
             </div>
             <div class="card-body">
               @if($pengumuman)
-              <h3>{{ $pengumuman->isi_pengumuman }}</h3>
+              <h3>{!! $pengumuman->isi_pengumuman !!}</h3>
               @else
               <h3>Tidak Ada Pengumuman</h3>
               @endif
