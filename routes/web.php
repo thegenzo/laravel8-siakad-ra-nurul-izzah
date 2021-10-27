@@ -8,6 +8,7 @@ use App\Http\Controllers\MuridController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\NilaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,6 @@ Route::resource('jadwal', JadwalController::class);
 Route::get('/jadwal/kelas/{id}', [JadwalController::class, 'kelas'])->name('jadwal.kelas');
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 Route::post('/pengumuman', [PengumumanController::class, 'update'])->name('pengumuman.update');
+Route::resource('nilai', NilaiController::class);
+Route::get('/nilai/kelas/{id}', [NilaiController::class, 'kelas'])->name('nilai.kelas');
+Route::get('/nilai/murid/{id}', [NilaiController::class, 'murid'])->name('nilai.murid');
