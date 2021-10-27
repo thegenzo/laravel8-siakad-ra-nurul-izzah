@@ -45,7 +45,7 @@
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $data->nama_kelas }}</td>
                         <td class="text-center">
-                            <a href="{{ route('nilai.kelas', $data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Guru">
+                            <a href="{{ route('guru.kelas', $data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Guru">
                                 <i class="fas fa-eye" ></i>
                             </a>
                         </td>

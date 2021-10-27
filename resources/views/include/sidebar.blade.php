@@ -18,7 +18,7 @@
             <li class="{{ Request::is('admin-dashboard') ? ' active' : '' }}"><a class="nav-link" href="/admin-dashboard">Admin Dashboard</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown {{ Request::is('admin') || Request::is('guru') || Request::is('murid') || Request::is('kepsek') ? ' active' : '' }}">
+        <li class="nav-item dropdown {{ Request::is('admin') || Request::is('guru') || Request::is('murid') || Request::is('mapel') || Request::is('jadwal') ? ' active' : '' }}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Data Master</span></a>
           <ul class="dropdown-menu">
             <li class="{{ Request::is('admin') ? ' active' : '' }}"><a class="nav-link" href="{{ route('admin.index') }}">Admin</a></li>
