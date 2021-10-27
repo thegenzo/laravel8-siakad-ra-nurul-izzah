@@ -1,10 +1,14 @@
 <div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-      <a href="index.html">Stisla</a>
+      <a href="#">
+        <img src="{{ asset('/assets/img/logo.jpg') }}" style="width: 50px; height: 50px;" alt="">
+      </a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="index.html">St</a>
+      <a href="#">
+        <img src="{{ asset('/assets/img/logo.jpg') }}" style="width: 50px; height: 50px;" alt="">
+      </a>
     </div>
     <ul class="sidebar-menu">
         <li class="nav-item dropdown {{ Request::is('dashboard') || Request::is('admin-dashboard') ? ' active' : '' }}">
