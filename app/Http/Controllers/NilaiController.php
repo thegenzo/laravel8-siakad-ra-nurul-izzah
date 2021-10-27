@@ -30,7 +30,7 @@ class NilaiController extends Controller
     public function kelas($id)
     {
         $kelas = Kelas::find($id);
-        $murid = Murid::with('user')->where('id_kelas', $id)->orderby('user.name', 'asc')->get();
+        $murid = Murid::with('user')->where('id_kelas', $id)->orderby('id_user', 'asc')->get();
 
         return view('pages.admin.nilai.kelas', compact('kelas', 'murid'));
     }
@@ -43,11 +43,15 @@ class NilaiController extends Controller
     public function murid($id)
     {
         $murid = Murid::find($id);
-        $kelas = Kelas::find($murid->id_kelas);
-        $jadwal = Jadwal::orderBy('id_mapel')->where('id_kelas', $kelas->id)->get();
-        $mapel = $jadwal->groupBy('id_mapel');
+        $mapel = Mapel::all();
+        $nilai = Nilai::where('id_murid', $id)->get();
 
-        return view('pages.admin.nilai.create', compact('murid', 'kelas', 'mapel'));
+        $mapelData = [];
+        foreach($nilai as $data) {
+            $mapelData = Mapel::where('id', '!=', $data->id_mapel)->get();
+        }
+
+        return view('pages.admin.nilai.murid', compact('murid', 'mapel', 'mapelData', 'nilai'));
     }
 
     public function create()
@@ -97,7 +101,42 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'id_mapel'              => 'required',
+            'tes1'                  => 'required',
+            'tes2'                  => 'required',
+            'tes3'                  => 'required',
+            'tes4'                  => 'required',
+            'tes5'                  => 'required',
+        ];
+
+        $messages = [
+            'id_mapel.required'                 => 'Mapel Wajib Diisi',
+            'tes1.required'                     => 'Tes 1 Wajib Diisi',
+            'tes2.required'                     => 'Tes 2 Wajib Diisi',
+            'tes3.required'                     => 'Tes 3 Wajib Diisi',
+            'tes4.required'                     => 'Tes 4 Wajib Diisi',
+            'tes5.required'                     => 'Tes 5 Wajib Diisi',     
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+
+        $murid = Murid::find($id);
+        $kelas = Kelas::where('id', $murid->id_kelas)->first();
+        $guru = Guru::where('id_kelas', $kelas->id)->first();
+        $data = $request->all();
+        $data['id_murid'] = $murid->id;
+        $data['id_kelas'] = $murid->kelas->id;
+        $data['id_guru'] = $guru->id;
+        Nilai::create($data);
+
+        Alert::success('Berhasil', 'Nilai Murid Berhasil Diinput');
+
+        return redirect()->back();
     }
 
     /**
