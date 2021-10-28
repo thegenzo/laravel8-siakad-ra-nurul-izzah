@@ -198,8 +198,9 @@ Nilai Murid
             </div>
           </div>
         @endforelse
-        <form action="/rapor/kelas/{{$kelas->id}}/murid/{{$murid->id}}" method="post">
+        <form action="/rapor/kelas/{{$kelas->id}}/murid/{{$murid->id}}" method="POST">
             @csrf
+            @method('PUT')
             <div class="card">
                 <div class="card-header">
                   <h4>Masukkan Rapor Murid</h4>
