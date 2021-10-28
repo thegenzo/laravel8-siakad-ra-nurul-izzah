@@ -45,7 +45,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function() {
     Route::get('/guru/kelas/{id}', [GuruController::class, 'kelas'])->name('guru.kelas');
     Route::resource('murid', MuridController::class);
     Route::get('/murid/kelas/{id}', [MuridController::class, 'kelas'])->name('murid.kelas');
-    Route::get('/alumni', [MuridController::class, 'alumni']);
     Route::resource('mapel', MapelController::class);
     Route::resource('jadwal', JadwalController::class);
     Route::get('/jadwal/kelas/{id}', [JadwalController::class, 'kelas'])->name('jadwal.kelas');
@@ -61,4 +60,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function() {
     Route::get('/rapor/kelas/{id}', [RaporController::class, 'kelas'])->name('rapor.kelas');
     Route::get('/rapor/kelas/{idKelas}/murid/{id}', [RaporController::class, 'murid'])->name('rapor.murid');
     Route::put('/rapor/kelas/{idKelas}/murid/{id}', [RaporController::class, 'postRapor']);
+    Route::get('/alumni', [MuridController::class, 'alumni']);
+    Route::get('/alumni/{id}', [MuridController::class, 'alumni_rapor']);
 });

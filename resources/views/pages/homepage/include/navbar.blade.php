@@ -1,4 +1,4 @@
-<div class="navbar-bg"></div>
+<div class="navbar-bg-home"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
   <a href="/" class="navbar-brand sidebar-gone-hide">SIAKAD RA Nurul Izzah</a>
   <div class="navbar-nav">

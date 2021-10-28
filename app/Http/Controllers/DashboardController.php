@@ -29,12 +29,12 @@ class DashboardController extends Controller
         $murid = Murid::where('status_lulus', '0')->count();
         $alumni = Murid::where('status_lulus', '1')->count();
         
-        $muridL = Murid::where('jk', 'L')->count();
-        $muridP = Murid::where('jk', 'P')->count();
+        $muridL = Murid::where('jk', 'L')->where('status_lulus', '0')->count();
+        $muridP = Murid::where('jk', 'P')->where('status_lulus', '0')->count();
 
-        $kelasA = Murid::where('id_kelas', 1)->count();
-        $kelasB1 = Murid::where('id_kelas', 2)->count();
-        $kelasB2 = Murid::where('id_kelas', 3)->count();
+        $kelasA = Murid::where('id_kelas', 1)->where('status_lulus', '0')->count();
+        $kelasB1 = Murid::where('id_kelas', 2)->where('status_lulus', '0')->count();
+        $kelasB2 = Murid::where('id_kelas', 3)->where('status_lulus', '0')->count();
 
         return view('pages.admin-dashboard', compact('admin', 'guru', 'murid', 'alumni', 'muridL', 'muridP', 'kelasA', 'kelasB1', 'kelasB2'));
 

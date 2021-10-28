@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Rapor;
 use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Murid;
@@ -264,5 +265,12 @@ class MuridController extends Controller
         $alumni = Murid::where('status_lulus', 1)->get();
 
         return view('pages.admin.murid.alumni', compact('alumni'));
+    }
+
+    public function alumni_rapor($id)
+    {
+        $rapor = Rapor::where('id_murid', $id)->get();
+
+        return view('pages.admin.murid.alumni-rapor', compact('rapor'));
     }
 }

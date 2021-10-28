@@ -163,29 +163,27 @@ Nilai Murid
                 <h4>Nilai Rapor di Kelas {{ $data->kelas->nama_kelas }}</h4>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-hover" id="TABLE_3">
-                    <thead>
-                        <tr>
-                            <th class="text-center">NEM</th>
-                            <th>Predikat</th>
-                            <th>Deskripsi</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($rapor as $data)
-                        <tr>
-                            <td class="text-center">{{ $data->nem }}</td>
-                            <td>{{ $data->predikat }}</td>
-                            <td>{{ $data->deskripsi }}</td>
-                            <td>{{ $data->status }}</td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="4" style="font-weight: bold; font-size: 18px;" class="text-center">Data Nilai Rapor Murid {{ $murid->user->name }} Kosong</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
+                <table class="table" style="font-size: 18px;">
+                    <tr>
+                        <td>NEM</td>
+                        <td>:</td>
+                        <td>{{ $data->nem }}</td>
+                    </tr>
+                    <tr>
+                        <td>Predikat</td>
+                        <td>:</td>
+                        <td>{{ $data->predikat }}</td>
+                    </tr>
+                    <tr>
+                        <td>Deskripsi</td>
+                        <td>:</td>
+                        <td>{{ $data->deskripsi }}</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>{{ $data->status }}</td>
+                    </tr>
                 </table>
             </div>
         </div>

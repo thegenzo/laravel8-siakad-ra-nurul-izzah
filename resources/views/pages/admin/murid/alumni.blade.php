@@ -52,9 +52,12 @@ Data Alumni
                         <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
                         <td>{{ $data->alamat }}</td>
                         <td class="text-center">
-                            <a href="{{ route('murid.show', $data->id) }} " class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Detail">
+                            <a href="{{ route('murid.show', $data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Detail">
                                 <i class="fas fa-eye" ></i>
                             </a>
+                            <a href="/alumni/{{$data->id}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Lihat Rapor">
+                              <i class="fas fa-book" ></i>
+                          </a>
                         </td>
                     </tr>
                     @empty
