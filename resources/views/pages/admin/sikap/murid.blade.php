@@ -88,9 +88,9 @@ Sikap Murid
                             <th class="text-center">No</th>
                             <th>Nama Mapel</th>
                             <th>Guru</th>
-                            <th class="text-center">Sikap 1</th>
-                            <th class="text-center">Sikap 2</th>
-                            <th class="text-center">Sikap 3</th>
+                            <th class="text-center">Teman</th>
+                            <th class="text-center">Guru</th>
+                            <th class="text-center">Diri Sendiri</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -133,20 +133,20 @@ Sikap Murid
                   <div class="row">
                       <div class="col-sm-4">
                           <div class="form-group">
-                              <label for="">Sikap 1</label>
-                              <input type="text" class="form-control" name="sikap1" id="sikap1" placeholder="Sikap 1">
+                              <label for="">Teman</label>
+                              <input type="text" class="form-control" name="sikap1" id="sikap1" placeholder="Teman">
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
-                              <label for="">Sikap 2</label>
-                              <input type="text" class="form-control" name="sikap2" id="sikap2" placeholder="Sikap 2">
+                              <label for="">Guru</label>
+                              <input type="text" class="form-control" name="sikap2" id="sikap2" placeholder="Guru">
                           </div>
                       </div>
                       <div class="col-sm-4">
                           <div class="form-group">
-                              <label for="">Sikap 3</label>
-                              <input type="text" class="form-control" name="sikap3" id="sikap3" placeholder="Sikap 3">
+                              <label for="">Diri Sendiri</label>
+                              <input type="text" class="form-control" name="sikap3" id="sikap3" placeholder="Diri Sendiri">
                           </div>
                       </div>
                   </div>

@@ -36,12 +36,7 @@ class Guru extends Model
     public function sikap()
     {
         return $this->hasMany(Sikap::class, 'id_guru');
-    }
-
-    public function rapor()
-    {
-        return $this->hasMany(Rapor::class, 'id_guru');
-    }
+    }   
 
     public function ekskul()
     {

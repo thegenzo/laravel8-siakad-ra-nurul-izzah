@@ -195,8 +195,10 @@
       </div>
     </li>
     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-      <img alt="image" src="../assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-      <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+      @if(auth()->user()->level == 'admin')
+      <img alt="image" src="{{ asset('/uploads/admin/'.auth()->user()->avatar ) }}" class="rounded-circle mr-1">
+      @endif
+      <div class="d-sm-none d-lg-inline-block">Halo, {{ auth()->user()->name }}</div></a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title">Logged in 5 min ago</div>
         <a href="features-profile.html" class="dropdown-item has-icon">
@@ -209,9 +211,9 @@
           <i class="fas fa-cog"></i> Settings
         </a>
         <div class="dropdown-divider"></div>
-        <form action="/logout" method="POST">
+        <form action="{{ url('/logout') }}" method="POST">
           @csrf
-          <button type="submit" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
+          <button type="submit" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i>Logout</button>
         </form>
         {{-- <a href="#" class="dropdown-item has-icon text-danger">
           <i class="fas fa-sign-out-alt"></i> Logout

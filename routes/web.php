@@ -12,6 +12,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\SikapController;
+use App\Http\Controllers\RaporController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ use App\Http\Controllers\SikapController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Halaman homepage
+Route::view('/', 'pages.homepage.home');
 
 // Proses Login dan Logout
 Route::get('login', [AuthController::class, 'showFormLogin'])->name('login');
@@ -53,4 +56,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function() {
     Route::resource('sikap', SikapController::class);
     Route::get('/sikap/kelas/{id}', [SikapController::class, 'kelas'])->name('sikap.kelas');
     Route::get('/sikap/murid/{id}', [SikapController::class, 'murid'])->name('sikap.murid');
+    Route::resource('rapor', RaporController::class);
+    Route::get('/rapor/kelas/{id}', [RaporController::class, 'kelas'])->name('rapor.kelas');
+    Route::get('/rapor/kelas/{idKelas}/murid/{id}', [RaporController::class, 'murid'])->name('rapor.murid');
+    Route::put('/rapor/kelas/{idKelas}/murid/{id}', [RaporController::class, 'postRapor']);
 });
