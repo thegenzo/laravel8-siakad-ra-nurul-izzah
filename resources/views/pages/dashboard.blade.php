@@ -39,7 +39,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="3" style="font-weight: bold; font-size: 18px;" class="text-center">Tidak Ada Jadwal Hari Ini</td>
+                        <td colspan="4" style="font-weight: bold; font-size: 18px;" class="text-center">Tidak Ada Jadwal Hari Ini</td>
                     </tr>
                     @endforelse
                 </tbody>

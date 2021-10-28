@@ -30,7 +30,7 @@ class NilaiController extends Controller
     public function kelas($id)
     {
         $kelas = Kelas::find($id);
-        $murid = Murid::with('user')->where('id_kelas', $id)->orderby('id_user', 'asc')->get();
+        $murid = Murid::with('user')->where('id_kelas', $id)->where('status_lulus', '0')->orderby('id_user', 'asc')->get();
 
         return view('pages.admin.nilai.kelas', compact('kelas', 'murid'));
     }

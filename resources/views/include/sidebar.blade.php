@@ -37,7 +37,8 @@
             <li class="{{ Request::is('rapor') ? ' active' : '' }}"><a class="nav-link" href="{{ route('rapor.index') }}">Rapor</a></li>
           </ul>
         </li>
-        <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+        <li class="{{ Request::is('alumni') ? ' active' : '' }}"><a class="nav-link" href="/alumni"><i class="fas fa-exclamation"></i><span>Alumni RA</span></a></li>
+        {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
           <ul class="dropdown-menu">
@@ -167,6 +168,6 @@
         <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
           <i class="fas fa-rocket"></i> Documentation
         </a>
-      </div>
+      </div> --}}
   </aside>
 </div>

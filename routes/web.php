@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function() {
     Route::get('/guru/kelas/{id}', [GuruController::class, 'kelas'])->name('guru.kelas');
     Route::resource('murid', MuridController::class);
     Route::get('/murid/kelas/{id}', [MuridController::class, 'kelas'])->name('murid.kelas');
+    Route::get('/alumni', [MuridController::class, 'alumni']);
     Route::resource('mapel', MapelController::class);
     Route::resource('jadwal', JadwalController::class);
     Route::get('/jadwal/kelas/{id}', [JadwalController::class, 'kelas'])->name('jadwal.kelas');

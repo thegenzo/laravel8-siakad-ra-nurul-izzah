@@ -27,7 +27,7 @@ class MuridController extends Controller
 
     public function kelas($id)
     {
-        $murid = Murid::where('id_kelas', $id)->get();
+        $murid = Murid::where('id_kelas', $id)->where('status_lulus', '0')->get();
         $kelas = Kelas::find($id);
 
         return view('pages.admin.murid.kelas', compact('murid', 'kelas'));
@@ -257,5 +257,12 @@ class MuridController extends Controller
             Alert::success('Berhasil', 'Murid Berhasil Dihapus');
             return redirect('/murid');
         }
+    }
+
+    public function alumni()
+    {
+        $alumni = Murid::where('status_lulus', 1)->get();
+
+        return view('pages.admin.murid.alumni', compact('alumni'));
     }
 }

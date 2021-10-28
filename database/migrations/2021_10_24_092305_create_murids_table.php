@@ -31,6 +31,7 @@ class CreateMuridsTable extends Migration
             $table->string('nama_ortu');
             $table->string('pekerjaan_ortu');
             $table->text('alamat');
+            $table->enum('status_lulus', ['1', '0']);
             $table->string('no_hp');
 
             $table->timestamps();

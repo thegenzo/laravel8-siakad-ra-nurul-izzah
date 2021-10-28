@@ -166,25 +166,23 @@ Nilai Murid
                 <table class="table table-striped table-hover" id="TABLE_3">
                     <thead>
                         <tr>
-                            <th class="text-center">No</th>
-                            <th>NEM</th>
+                            <th class="text-center">NEM</th>
                             <th>Predikat</th>
                             <th>Deskripsi</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($sikap as $data)
+                        @forelse ($rapor as $data)
                         <tr>
-                            <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">{{ $data->nem }}</td>
-                            <td class="text-center">{{ $data->predikat }}</td>
-                            <td class="text-center">{{ $data->deskripsi }}</td>
-                            <td class="text-center">{{ $data->status }}</td>
+                            <td>{{ $data->predikat }}</td>
+                            <td>{{ $data->deskripsi }}</td>
+                            <td>{{ $data->status }}</td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5" style="font-weight: bold; font-size: 18px;" class="text-center">Data Nilai Rapor Murid {{ $murid->user->name }} Kosong</td>
+                            <td colspan="4" style="font-weight: bold; font-size: 18px;" class="text-center">Data Nilai Rapor Murid {{ $murid->user->name }} Kosong</td>
                         </tr>
                         @endforelse
                     </tbody>
