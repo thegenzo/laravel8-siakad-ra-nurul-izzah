@@ -28,8 +28,4 @@ class Mapel extends Model
         return $this->hasMany(Sikap::class, 'id_mapel');
     }
 
-    public function rapor()
-    {
-        return $this->hasMany(Rapor::class, 'id_mapel');
-    }
 }

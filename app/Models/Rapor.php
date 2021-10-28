@@ -11,7 +11,7 @@ class Rapor extends Model
 
     protected $table = 'rapors';
     
-    protected $fillable = ['id_murid', 'id_kelas', 'id_guru', 'id_mapel', 'nem', 'predikat', 'deskripsi'];
+    protected $fillable = ['id_murid', 'id_kelas', 'id_guru', 'nem', 'predikat', 'deskripsi', 'status'];
 
     public function murid()
     {
@@ -28,8 +28,4 @@ class Rapor extends Model
         return $this->belongsTo(Guru::class, 'id_guru');
     }
 
-    public function mapel()
-    {
-        return $this->belongsTo(Mapel::class, 'id_mapel');
-    }
 }
