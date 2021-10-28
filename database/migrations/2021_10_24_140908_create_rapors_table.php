@@ -24,9 +24,9 @@ class CreateRaporsTable extends Migration
             $table->unsignedBigInteger('id_kelas');
             $table->foreign('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            // relasi tabel rapors dan gurus
-            $table->unsignedBigInteger('id_guru');
-            $table->foreign('id_guru')->references('id')->on('gurus')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            // // relasi tabel rapors dan gurus
+            // $table->unsignedBigInteger('id_guru');
+            // $table->foreign('id_guru')->references('id')->on('gurus')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             // // relasi tabel rapors dan mapels
             // $table->unsignedBigInteger('id_mapel');
