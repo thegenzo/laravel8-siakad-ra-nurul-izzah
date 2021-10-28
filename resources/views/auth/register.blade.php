@@ -129,10 +129,10 @@
                        </div>
                    </div>
                   <div class="form-group">
-                    <a href="/login" class="btn btn-warning btn-lg btn-block">Sudah Punya Akun? Login</a>
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
                       Register
                     </button>
+                    <a href="/login" class="btn btn-warning btn-lg btn-block">Sudah Punya Akun? Login</a>
                   </div>
                 </form>
               </div>
