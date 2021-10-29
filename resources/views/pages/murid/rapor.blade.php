@@ -6,8 +6,6 @@ Nilai Murid
 
 @push('addon-style')
 <!-- CSS Libraries -->
-<link rel="stylesheet" href="{{ asset('/node_modules/select2/dist/css/select2.min.css') }}">
-<link rel="stylesheet" href="{{ asset('/node_modules/selectric/public/selectric.css') }}">
 <link rel="stylesheet" href="{{ asset('/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
 @endpush
 
@@ -192,39 +190,6 @@ Nilai Murid
             </div>
           </div>
         @endforelse
-        <form action="/rapor/kelas/{{$kelas->id}}/murid/{{$murid->id}}" method="POST">
-            @csrf
-            @method('PUT')
-            <div class="card">
-                <div class="card-header">
-                  <h4>Masukkan Rapor Murid</h4>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="">NEM</label>
-                        <input type="number" class="form-control" name="nem" id="nem" placeholder="Masukkan NEM Murid">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Predikat</label>
-                        <input type="text" class="form-control" name="predikat" id="predikat" placeholder="Masukkan Predikat Murid">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Deskripsi</label>
-                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Status</label>
-                        <select name="status" id="status" class="form-control">
-                            <option value="Lulus">Lulus</option>
-                            <option value="Pindah di Kelas B1">Pindah di Kelas B1</option>
-                            <option value="Pindah di Kelas B2">Pindah di Kelas B2</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <a href="{{ url()->previous() }}" class="btn btn-lg btn-warning d-inline">Kembali</a>
-            <button class="btn btn-success">Simpan</button>
-        </form>
       </div>
     </div>
   </section>
@@ -233,11 +198,8 @@ Nilai Murid
 
 @push('addon-script')
 <!-- JS Libraies -->
-<script src="{{ asset('/node_modules/select2/dist/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('/node_modules/selectric/public/jquery.selectric.min.js') }}"></script>
 <script src="{{ asset('/node_modules/datatables/media/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('/node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         $("table[id^='TABLE']").dataTable( {

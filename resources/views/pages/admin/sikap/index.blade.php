@@ -34,21 +34,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($kelas as $data)
+                    @if (auth()->user()->level == 'admin' || auth()->user()->level == 'kepsek')
+                      @foreach ($kelas as $data)
+                      <tr>
+                          <td class="text-center">{{ $loop->iteration }}</td>
+                          <td>{{ $data->nama_kelas }}</td>
+                          <td class="text-center">
+                              <a href="{{ route('sikap.kelas', $data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Siswa">
+                                  <i class="fas fa-eye" ></i>
+                              </a>
+                          </td>
+                      </tr>
+                      @endforeach
+                    @else
                     <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $data->nama_kelas }}</td>
-                        <td class="text-center">
-                            <a href="{{ route('sikap.kelas', $data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Siswa">
-                                <i class="fas fa-eye" ></i>
-                            </a>
-                        </td>
+                      <td class="text-center">1</td>
+                      <td>{{ $kelas->nama_kelas }}</td>
+                      <td class="text-center">
+                        <a href="{{ route('sikap.kelas', $kelas->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Siswa">
+                          <i class="fas fa-eye" ></i>
+                      </a>
+                      </td>
                     </tr>
-                    @empty
-                    <tr>
-                        <td colspan="3" style="font-weight: bold; font-size: 18px;" class="text-center">Data Sikap Kosong</td>
-                    </tr>
-                    @endforelse
+                    @endif
                 </tbody>
             </table>
           </div>

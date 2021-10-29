@@ -84,7 +84,7 @@ class RegisterController extends Controller
     
             $input = $request->except(['name', 'avatar', 'email', 'password', 'konfirmasi_password']);
     
-            Murid::create(array_merge($input, ['id_user' => $user->id]));
+            Murid::create(array_merge($input, ['id_user' => $user->id], ['status_lulus' => '0']));
             
         }
         else {
@@ -101,7 +101,7 @@ class RegisterController extends Controller
     
             $input = $request->except(['name', 'avatar', 'email', 'password', 'konfirmasi_password']);
     
-            Murid::create(array_merge($input, ['id_user' => $user->id]));
+            Murid::create(array_merge($input, ['id_user' => $user->id], ['status_lulus' => '0']));
         }
 
         Alert::success('Berhasil', 'Registrasi Murid Berhasil, Silahkan Login');

@@ -12,24 +12,36 @@
   <ul class="navbar-nav navbar-right">
     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
       @if(auth()->user()->level == 'admin')
-      <img alt="image" src="{{ asset('/uploads/admin/'.auth()->user()->avatar ) }}" class="rounded-circle mr-1">
+      <figure class="avatar mr-2 avatar-sm">
+        <img alt="image" src="{{ asset('/uploads/admin/'.auth()->user()->avatar ) }}">
+      </figure>
+      @elseif(auth()->user()->level == 'kepsek')
+      <figure class="avatar mr-2 avatar-sm">
+        <img alt="image" src="{{ asset('/uploads/kepsek/'.auth()->user()->avatar ) }}">
+      </figure>
+      
+      @elseif(auth()->user()->level == 'guru')
+      <figure class="avatar mr-2 avatar-sm">
+        <img alt="image" src="{{ asset('/uploads/guru/'.auth()->user()->avatar ) }}">
+      </figure>
+      
+      @elseif(auth()->user()->level == 'murid')
+      <figure class="avatar mr-2 avatar-sm">
+        <img alt="image" src="{{ asset('/uploads/murid/'.auth()->user()->avatar ) }}">
+      </figure>
       @endif
       <div class="d-sm-none d-lg-inline-block">Halo, {{ auth()->user()->name }}</div></a>
       <div class="dropdown-menu dropdown-menu-right">
-        <div class="dropdown-title">Logged in 5 min ago</div>
-        <a href="features-profile.html" class="dropdown-item has-icon">
-          <i class="far fa-user"></i> Profile
+        <a href="/profil" class="dropdown-item has-icon">
+          <i class="far fa-user"></i> Profil
         </a>
-        <a href="features-activities.html" class="dropdown-item has-icon">
-          <i class="fas fa-bolt"></i> Activities
-        </a>
-        <a href="features-settings.html" class="dropdown-item has-icon">
-          <i class="fas fa-cog"></i> Settings
+        <a href="/akun" class="dropdown-item has-icon">
+          <i class="fas fa-cog"></i> Akun
         </a>
         <div class="dropdown-divider"></div>
         <form action="{{ url('/logout') }}" method="POST">
           @csrf
-          <button type="submit" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i>Logout</button>
+          <button type="submit" class="dropdown-item text-danger">Logout</button>
         </form>
         {{-- <a href="#" class="dropdown-item has-icon text-danger">
           <i class="fas fa-sign-out-alt"></i> Logout

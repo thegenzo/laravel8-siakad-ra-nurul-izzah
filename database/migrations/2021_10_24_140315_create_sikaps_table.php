@@ -24,10 +24,6 @@ class CreateSikapsTable extends Migration
             $table->unsignedBigInteger('id_kelas');
             $table->foreign('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            // relasi tabel sikaps dan gurus
-            $table->unsignedBigInteger('id_guru');
-            $table->foreign('id_guru')->references('id')->on('gurus')->constrained()->onDelete('cascade')->onUpdate('cascade');
-
             // relasi tabel sikaps dan mapels
             $table->unsignedBigInteger('id_mapel');
             $table->foreign('id_mapel')->references('id')->on('mapels')->constrained()->onDelete('cascade')->onUpdate('cascade');

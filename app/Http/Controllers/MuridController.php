@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Nilai;
+use App\Models\Sikap;
 use App\Models\Rapor;
 use App\Models\Kelas;
 use App\Models\User;
@@ -119,7 +121,7 @@ class MuridController extends Controller
     
             $input = $request->except(['name', 'avatar', 'email', 'password', 'konfirmasi_password']);
     
-            Murid::create(array_merge($input, ['id_user' => $user->id]));
+            Murid::create(array_merge($input, ['id_user' => $user->id], ['status_lulus' => '0']));
             
         }
         else {
@@ -136,7 +138,7 @@ class MuridController extends Controller
     
             $input = $request->except(['name', 'avatar', 'email', 'password', 'konfirmasi_password']);
     
-            Murid::create(array_merge($input, ['id_user' => $user->id]));
+            Murid::create(array_merge($input, ['id_user' => $user->id], ['status_lulus' => '0']));
         }
 
         Alert::success('Berhasil', 'Murid Berhasil Ditambahkan');
@@ -272,5 +274,34 @@ class MuridController extends Controller
         $rapor = Rapor::where('id_murid', $id)->get();
 
         return view('pages.admin.murid.alumni-rapor', compact('rapor'));
+    }
+
+    public function nilai_saya()
+    {
+        $data = auth()->user()->id;
+        $murid = Murid::where('id_user', $data)->first();
+        $nilai = Nilai::where('id_murid', $murid->id)->get();
+
+        return view('pages.murid.nilai', compact('nilai'));
+    }
+
+    public function sikap_saya()
+    {
+        $data = auth()->user()->id;
+        $murid = Murid::where('id_user', $data)->first();
+        $sikap = Sikap::where('id_murid', $murid->id)->get();
+
+        return view('pages.murid.sikap', compact('sikap'));
+    }
+
+    public function rapor_saya()
+    {
+        $data = auth()->user()->id;
+        $murid = Murid::where('id_user', $data)->first();
+        $nilai = Nilai::where('id_murid', $murid->id)->get();
+        $sikap = Sikap::where('id_murid', $murid->id)->get();
+        $rapor = Rapor::where('id_murid', $murid->id)->get();
+
+        return view('pages.murid.rapor', compact('rapor', 'nilai', 'sikap', 'murid'));
     }
 }

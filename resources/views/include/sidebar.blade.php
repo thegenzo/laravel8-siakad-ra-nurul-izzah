@@ -11,6 +11,7 @@
       </a>
     </div>
     <ul class="sidebar-menu">
+        @if(auth()->user()->level == 'admin')
         <li class="nav-item dropdown {{ Request::is('dashboard') || Request::is('admin-dashboard') ? ' active' : '' }}">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           <ul class="dropdown-menu">
@@ -38,6 +39,22 @@
           </ul>
         </li>
         <li class="{{ Request::is('alumni') ? ' active' : '' }}"><a class="nav-link" href="/alumni"><i class="fas fa-exclamation"></i><span>Alumni RA</span></a></li>
+        
+        @elseif(auth()->user()->level == 'guru')
+        <li class="{{ Request::is('dashboard') ? ' active' : '' }}"><a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a></li>
+        <li class="nav-item dropdown {{ Request::is('nilai') || Request::is('sikap') || Request::is('rapor') ? ' active' : '' }}">
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Penilaian</span></a>
+          <ul class="dropdown-menu">
+            <li class="{{ Request::is('nilai') ? ' active' : '' }}"><a class="nav-link" href="{{ route('nilai.index') }}">Entry Nilai Murid</a></li>
+            <li class="{{ Request::is('sikap') ? ' active' : '' }}"><a class="nav-link" href="{{ route('sikap.index') }}">Entry Sikap Murid</a></li>
+            <li class="{{ Request::is('rapor') ? ' active' : '' }}"><a class="nav-link" href="{{ route('rapor.index') }}">Entry Rapor Murid</a></li>
+          </ul>
+        </li>
+
+        @elseif(auth()->user()->level == 'murid')
+        <li class="{{ Request::is('dashboard') ? ' active' : '' }}"><a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a></li>
+        <li class="{{ Request::is('rapor-saya') ? ' active' : '' }}"><a class="nav-link" href="/rapor-saya"><i class="far fa-file-alt"></i><span>Rapor Saya</span></a></li>
+        @endif
         {{-- <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>

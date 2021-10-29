@@ -87,7 +87,6 @@ Nilai Murid
                         <tr>
                             <th class="text-center">No</th>
                             <th>Nama Mapel</th>
-                            <th>Guru</th>
                             <th class="text-center">Tes 1</th>
                             <th class="text-center">Tes 2</th>
                             <th class="text-center">Tes 3</th>
@@ -100,7 +99,6 @@ Nilai Murid
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>{{ $data->mapel->nama_mapel }}</td>
-                            <td>{{ $data->guru->user->name }}</td>
                             <td class="text-center">{{ $data->tes1 }}</td>
                             <td class="text-center">{{ $data->tes2 }}</td>
                             <td class="text-center">{{ $data->tes3 }}</td>
@@ -127,7 +125,7 @@ Nilai Murid
                   <div class="form-group">
                       <label for="">Mapel</label>
                       <select name="id_mapel" id="id_mapel" class="form-control select2">
-                          @forelse($mapel as $data)
+                          @forelse($mapelData as $data)
                           <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
                           @empty
                           <option selected disabled>Seluruh Mapel Sudah Memiliki Nilai</option>

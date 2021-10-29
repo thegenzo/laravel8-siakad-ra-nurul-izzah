@@ -23,11 +23,6 @@ class Sikap extends Model
         return $this->belongsTo(Kelas::class, 'id_kelas');
     }
 
-    public function guru()
-    {
-        return $this->belongsTo(Guru::class, 'id_guru');
-    }
-
     public function mapel()
     {
         return $this->belongsTo(Mapel::class, 'id_mapel');

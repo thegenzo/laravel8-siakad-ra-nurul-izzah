@@ -24,7 +24,12 @@ class RaporController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
+        if(auth()->user()->level == 'admin' || auth()->user()->level == 'kepsek') {
+            $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
+        } else {
+            $guru = Guru::where('id_user', auth()->user()->id)->first();
+            $kelas = Kelas::where('id', $guru->id_kelas)->first();
+        }
         return view('pages.admin.rapor.index', compact('kelas'));
     }
 

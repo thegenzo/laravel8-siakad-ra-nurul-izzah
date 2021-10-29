@@ -98,7 +98,7 @@
                 </div>
             </div>
             <a href="{{ route('admin.index') }}" class="btn btn-lg btn-warning d-inline">Kembali</a>
-            <button class="btn btn-success">Simpan</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
         </form>
       </div>
     </div>

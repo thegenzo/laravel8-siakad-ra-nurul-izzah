@@ -34,7 +34,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($kelas as $data)
+                  @if (auth()->user()->level == 'admin' || auth()->user()->level == 'kepsek')
+                    @foreach ($kelas as $data)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $data->nama_kelas }}</td>
@@ -44,11 +45,18 @@
                             </a>
                         </td>
                     </tr>
-                    @empty
-                    <tr>
-                        <td colspan="3" style="font-weight: bold; font-size: 18px;" class="text-center">Data Kelas Kosong</td>
-                    </tr>
-                    @endforelse
+                    @endforeach
+                  @else
+                  <tr>
+                    <td class="text-center">1</td>
+                    <td>{{ $kelas->nama_kelas }}</td>
+                    <td class="text-center">
+                      <a href="{{ route('rapor.kelas', $kelas->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Siswa">
+                        <i class="fas fa-eye" ></i>
+                    </a>
+                    </td>
+                  </tr>
+                  @endif
                 </tbody>
             </table>
           </div>

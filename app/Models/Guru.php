@@ -28,16 +28,6 @@ class Guru extends Model
         return $this->hasMany(Jadwal::class, 'id_guru');
     }
 
-    public function nilai()
-    {
-        return $this->hasMany(Nilai::class, 'id_guru');
-    }
-
-    public function sikap()
-    {
-        return $this->hasMany(Sikap::class, 'id_guru');
-    }   
-
     public function ekskul()
     {
         return $this->hasMany(Ekskul::class, 'id_murid');

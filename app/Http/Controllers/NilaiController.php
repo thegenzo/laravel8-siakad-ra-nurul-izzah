@@ -22,8 +22,12 @@ class NilaiController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
-
+        if(auth()->user()->level == 'admin' || auth()->user()->level == 'kepsek') {
+            $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
+        } else {
+            $guru = Guru::where('id_user', auth()->user()->id)->first();
+            $kelas = Kelas::where('id', $guru->id_kelas)->first();
+        }
         return view('pages.admin.nilai.index', compact('kelas'));
     }
 
@@ -127,11 +131,9 @@ class NilaiController extends Controller
 
         $murid = Murid::find($id);
         $kelas = Kelas::where('id', $murid->id_kelas)->first();
-        $guru = Guru::where('id_kelas', $kelas->id)->first();
         $data = $request->all();
         $data['id_murid'] = $murid->id;
         $data['id_kelas'] = $murid->kelas->id;
-        $data['id_guru'] = $guru->id;
         Nilai::create($data);
 
         Alert::success('Berhasil', 'Nilai Murid Berhasil Diinput');
