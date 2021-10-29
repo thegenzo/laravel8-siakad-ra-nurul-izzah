@@ -175,7 +175,7 @@ class GuruController extends Controller
         $rules = [
             'name'                  => 'required',
             'jk'                    => 'required',
-            'nip'                   => 'required|numeric',
+            'nip'                   => 'required|numeric',Rule::unique('gurus')->ignore($id),
             'id_kelas'              => 'required',
             'alamat'                => 'required',
             'no_hp'                 => 'required|numeric'
@@ -185,6 +185,7 @@ class GuruController extends Controller
             'name.required'                 => 'Nama Wajib Diisi',
             'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
             'nip.required'                  => 'NIP Wajib Diisi',
+            'nip.unique'                    => 'NIP Sudah Terdaftar',
             'nip.numeric'                   => 'NIP Harus Berupa Angka',
             'id_kelas.required'             => 'Kelas Wajib Diisi',
             'alamat.required'               => 'Alamat Wajib Diisi',

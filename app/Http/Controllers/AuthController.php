@@ -9,6 +9,7 @@ use Validator;
 use Hash;
 use Session;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -53,6 +54,7 @@ class AuthController extends Controller
 
         if ($user) { // true sekalian session field di users nanti bisa dipanggil via Auth
             //Login Success
+            Alert::success('Halo!', 'Senang Berjumpa Lagi');
             Auth::login($user);
             return redirect('/dashboard');
  
@@ -68,6 +70,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth()->logout(); // menghapus session yang aktif
-        return redirect()->route('login');
+        Alert::success('Daaahhh!', 'Sampai Jumpa Lagi');
+        return redirect('/');
     }
 }

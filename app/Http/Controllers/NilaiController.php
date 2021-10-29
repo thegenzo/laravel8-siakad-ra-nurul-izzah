@@ -50,12 +50,7 @@ class NilaiController extends Controller
         $mapel = Mapel::all();
         $nilai = Nilai::where('id_murid', $id)->get();
 
-        $mapelData = [];
-        foreach($nilai as $data) {
-            $mapelData = Mapel::where('id', '!=', $data->id_mapel)->get();
-        }
-
-        return view('pages.admin.nilai.murid', compact('murid', 'mapel', 'mapelData', 'nilai'));
+        return view('pages.admin.nilai.murid', compact('murid', 'mapel', 'nilai'));
     }
 
     public function create()

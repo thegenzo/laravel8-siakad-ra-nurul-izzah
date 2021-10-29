@@ -160,7 +160,7 @@ class AdminController extends Controller
         $rules = [
             'name'                  => 'required',
             'jk'                    => 'required',
-            'nip'                   => 'required|numeric',
+            'nip'                   => 'required|numeric',Rule::unique('admins')->ignore($id),
             'alamat'                => 'required',
             'no_hp'                 => 'required|numeric'
         ];
@@ -170,6 +170,7 @@ class AdminController extends Controller
             'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
             'nip.required'                  => 'Nomor Induk Pegawai Wajib Diisi',
             'nip.numeric'                   => 'Nomor Induk Pegawai Harus Berupa Angka',
+            'nip.unique'                    => 'Nomor Induk Pegawai Sudah Terdaftar',
             'alamat.required'               => 'Alamat Wajib Diisi',
             'no_hp.required'                => 'Nomor Handphone Wajib Diisi',
             'no_hp.numeric'                 => 'Nomor Handphone Harus Berupa Angka'                 
