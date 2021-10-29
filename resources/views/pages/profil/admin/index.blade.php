@@ -74,11 +74,13 @@
             </div>
             <div class="card-body">
               <input type="file" class="form-control" name="avatar" id="avatar">
-              <div class="col-sm-4"></div>
-              <div class="col-sm-4">
-                <img src="{{ asset('uploads/admin/'.$admin->user->avatar) }}" alt="..." class="card-img img-details mt-5" id="category-img-tag" >
+              <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                  <img src="{{ asset('uploads/admin/'.$admin->user->avatar) }}" alt="..." class="card-img img-details mt-5" id="category-img-tag" >
+                </div>
+                <div class="col-sm-4"></div>
               </div>
-              <div class="col-sm-4"></div>
             </div>
             <div class="card-footer text-right">
               <button type="submit" class="btn btn-success">Ubah Avatar</button>

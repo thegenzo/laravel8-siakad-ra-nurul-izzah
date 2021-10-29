@@ -121,7 +121,7 @@ Sikap Murid
                   <div class="form-group">
                       <label for="">Mapel</label>
                       <select name="id_mapel" id="id_mapel" class="form-control select2">
-                        @forelse($sikapData as $data)
+                        @forelse($mapel as $data)
                         <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
                         @empty
                         <option selected disabled>Seluruh Mapel Sudah Memiliki Nilai</option>
