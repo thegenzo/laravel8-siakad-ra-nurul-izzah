@@ -11,7 +11,7 @@
       </a>
     </div>
     <ul class="sidebar-menu">
-        @if(auth()->user()->level == 'admin')
+        @if(auth()->user()->level == 'admin' || auth()->user()->level == 'kepsek')
         <li class="nav-item dropdown {{ Request::is('dashboard') || Request::is('admin-dashboard') ? ' active' : '' }}">
           <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
           <ul class="dropdown-menu">
@@ -39,7 +39,8 @@
           </ul>
         </li>
         <li class="{{ Request::is('alumni') ? ' active' : '' }}"><a class="nav-link" href="/alumni"><i class="fas fa-exclamation"></i><span>Alumni RA</span></a></li>
-        
+        <li class="{{ Request::is('artikel') ? ' active' : '' }}"><a class="nav-link" href="/artikel"><i class="far fa-square"></i><span>Artikel</span></a></li>
+
         @elseif(auth()->user()->level == 'guru')
         <li class="{{ Request::is('dashboard') ? ' active' : '' }}"><a class="nav-link" href="/dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a></li>
         <li class="nav-item dropdown {{ Request::is('nilai') || Request::is('sikap') || Request::is('rapor') ? ' active' : '' }}">

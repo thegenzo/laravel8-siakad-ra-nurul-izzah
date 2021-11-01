@@ -14,6 +14,7 @@ use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\SikapController;
 use App\Http\Controllers\RaporController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArtikelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,9 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Halaman homepage
-Route::view('/', 'pages.homepage.home');
+// Halaman homepage dengan konten artikel
+Route::get('/', [ArtikelController::class, 'homeArtikel']);
+Route::get('/baca/{id}', [ArtikelController::class, 'bacaArtikel'])->name('baca_artikel');
 
 // Proses Login dan Logout
 Route::get('login', [AuthController::class, 'showFormLogin'])->name('login');
@@ -43,6 +45,9 @@ Route::post('/profil', [UserController::class, 'post_profile']);
 Route::post('/ubah-avatar', [UserController::class, 'ubah_avatar']);
 Route::get('/akun', [UserController::class, 'user_setting']);
 Route::post('/akun', [UserController::class, 'post_user']);
+
+// Data Artikel
+Route::resource('/artikel', ArtikelController::class);
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek']], function() {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
