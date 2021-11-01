@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             HariSeeder::class,
             KelasSeeder::class,
             PengumumanSeeder::class,
+            KepsekSeeder::class,
         ]);
     }
 }
