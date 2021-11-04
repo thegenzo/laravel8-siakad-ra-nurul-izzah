@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
-                <p>{!! $artikel->deskripsi !!}</p>
+                <h5>{!! $artikel->deskripsi !!}</h5>
             </div>
         </div>
         <a href="{{ route('artikel.index') }}" class="btn btn-lg btn-warning d-inline">Kembali</a>

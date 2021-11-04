@@ -146,7 +146,7 @@ class RaporController extends Controller
         if($request->status == 'Pindah di Kelas B1') {
             $data = $request->all();
             $data['id_murid'] = $murid->id;
-            $data['id_kelas'] = Kelas::where('id', 2)->first()->id;
+            $data['id_kelas'] = $murid->kelas->id;
             Rapor::create($data);
 
             // proses pindah kelas
@@ -155,7 +155,7 @@ class RaporController extends Controller
         } else if($request->status == 'Pindah di Kelas B2') {
             $data = $request->all();
             $data['id_murid'] = $murid->id;
-            $data['id_kelas'] = Kelas::where('id', 3)->first()->id;
+            $data['id_kelas'] = $murid->kelas->id;
             Rapor::create($data);
 
             // proses pindah kelas
