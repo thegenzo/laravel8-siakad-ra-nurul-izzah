@@ -165,7 +165,7 @@ class ArtikelController extends Controller
     {
         $artikel = Artikel::paginate(12);
 
-        return view('pages.homepage.home', compact('artikel'));
+        return view('pages.homepage.artikel', compact('artikel'));
     }
 
     public function bacaArtikel($id)

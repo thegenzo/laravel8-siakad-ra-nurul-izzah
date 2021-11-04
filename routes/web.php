@@ -27,8 +27,9 @@ use App\Http\Controllers\ArtikelController;
 |
 */
 // Halaman homepage dengan konten artikel
-Route::get('/', [ArtikelController::class, 'homeArtikel']);
-Route::get('/baca/{id}', [ArtikelController::class, 'bacaArtikel'])->name('baca_artikel');
+Route::view('/', 'pages.homepage.home');
+Route::get('/baca-artikel', [ArtikelController::class, 'homeArtikel']);
+Route::get('/baca-artikel/baca/{id}', [ArtikelController::class, 'bacaArtikel'])->name('baca_artikel');
 
 // Proses Login dan Logout
 Route::get('login', [AuthController::class, 'showFormLogin'])->name('login');
