@@ -129,11 +129,19 @@ class NilaiController extends Controller
         $data = $request->all();
         $data['id_murid'] = $murid->id;
         $data['id_kelas'] = $murid->kelas->id;
-        Nilai::create($data);
+        if(Nilai::where('id_murid', $murid->id)->where('id_kelas', $kelas->id)->where('id_mapel', $request->id_mapel)->exists()) {
+            Alert::error('Gagal', 'Nilai Mapel '. Mapel::where('id', $request->id_mapel)->first()->nama_mapel. ' Sudah Ada');
 
-        Alert::success('Berhasil', 'Nilai Murid Berhasil Diinput');
+            return redirect()->back();
+        }
+        else {
+            Nilai::create($data);
 
-        return redirect()->back();
+            Alert::success('Berhasil', 'Nilai Murid Berhasil Diinput');
+    
+            return redirect()->back();
+        }
+        
     }
 
     /**

@@ -11,7 +11,7 @@ class Murid extends Model
 
     protected $table = 'murids';
 
-    protected $fillable = ['id_user', 'jk', 'tempat_lahir', 'tanggal_lahir', 'id_kelas', 'nama_ortu', 'pekerjaan_ortu', 'alamat', 'no_hp', 'status_lulus'];
+    protected $fillable = ['id_user', 'nisn', 'nis', 'nik', 'jk', 'agama', 'tempat_lahir', 'tanggal_lahir', 'id_kelas', 'no_kk', 'nik_ayah', 'nik_ibu', 'nama_ayah', 'nama_ibu', 'pekerjaan_ayah', 'pekerjaan_ibu', 'pendidikan_ayah', 'pendidikan_ibu', 'alamat', 'no_hp', 'status_lulus', 'tahun_lulus'];
 
     public function user()
     {

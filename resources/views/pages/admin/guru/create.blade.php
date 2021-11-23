@@ -62,7 +62,7 @@
                   <div class="form-group">
                       <label for="">Avatar</label>
                       <input type="file" class="form-control" name="avatar" id="avatar">
-                      <small class="text-muted">Avatar harus berupa file gambar(JPG, JPEG, PNG)</small>
+                      <small class="text-muted">Avatar harus berupa file gambar(JPG, JPEG, PNG) (Boleh dikosongkan)</small>
                   </div>
                 </div>
             </div>
@@ -78,23 +78,42 @@
                     <div class="form-group">
                         <label for="">Jenis Kelamin</label>
                         <select name="jk" id="jk" class="form-control">
-                            <option selected hidden>Pilih JK</option>
+                            <option value="" selected>Pilih JK</option>
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group">
+                      <label for="">Agama</label>
+                      <select name="agama" id="agama" class="form-control">
+                          <option value="" selected hidden>Pilih Agama</option>
+                          <option value="Islam">Islam</option>
+                          <option value="Kristen Protestan">Kristen Protestan</option>
+                          <option value="Kristen Katolik">Kristen Katolik</option>
+                          <option value="Hindu">Hindu</option>
+                          <option value="Buddha">Buddha</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Kelas</label>
                         <select name="id_kelas" id="id_kelas" class="form-control">
-                            <option selected hidden>Pilih Kelas</option>
+                            <option value="" selected>Pilih Kelas</option>
                             @foreach ($kelas as $data)
                             <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Nomor Induk Pegawai (NIP)</label>
-                        <input type="number" class="form-control" placeholder="Masukkan NIP" name="nip" id="nip">
+                        <label for="">Nomor Unik Pendidik dan Tenaga Kependidikan (NUPTK)</label>
+                        <input type="number" class="form-control" placeholder="Masukkan NUPTK" name="nip" id="nip">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Tempat Lahir</label>
+                      <input type="text" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" id="tempat_lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tanggal Lahir</label>
+                        <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>

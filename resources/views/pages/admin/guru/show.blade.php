@@ -33,13 +33,17 @@
                 <div class="col-md-1 mb-4"></div>
                 <div class="col-md-7">
                     <h5 class="card-title card-text mb-2">Nama : {{ $guru->user->name }}</h5>
-                    <h5 class="card-title card-text mb-2">NIP : {{ $guru->nip }}</h5>
+                    <h5 class="card-title card-text mb-2">NUPTK : {{ $guru->nip }}</h5>
                     <h5 class="card-title card-text mb-2">Guru Kelas : {{ $guru->kelas->nama_kelas }}</h5>
                     @if ($guru->jk == 'L')
                         <h5 class="card-title card-text mb-2">Jenis Kelamin : Laki-laki</h5>
                     @else
                         <h5 class="card-title card-text mb-2">Jenis Kelamin : Perempuan</h5>
                     @endif
+                    <h5 class="card-title card-text mb-2">Agama : {{ $guru->agama }}</h5>
+                    <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ $guru->tanggal_lahir }}</h5>
+                    <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $guru->tempat_lahir }}</h5>
+                    <h5 class="card-title card-text mb-2">Alamat : {{ $guru->alamat }}</h5>
                     <h5 class="card-title card-text mb-2">Nomor Handphone : {{ $guru->no_hp }}</h5>
                 </div>
             </div>

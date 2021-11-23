@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label for="">Hari</label>
                         <select name="id_hari" id="id_hari" class="form-control">
-                            <option selected hidden>Pilih Hari</option>
+                            <option value="" selected>Pilih Hari</option>
                             @foreach($hari as $data)
                             <option value="{{ $data->id }}">{{ $data->nama_hari }}</option>
                             @endforeach
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="">Kelas</label>
                         <select name="id_kelas" id="id_kelas" class="form-control">
-                            <option selected hidden>Pilih Kelas</option>
+                            <option value="" selected>Pilih Kelas</option>
                             @foreach($kelas as $data)
                             <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
                             @endforeach
@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label for="">Mapel</label>
                         <select name="id_mapel" id="id_mapel" class="form-control">
-                            <option selected hidden>Pilih Mapel</option>
+                            <option value="" selected>Pilih Mapel</option>
                             @forelse($mapel as $data)
                             <option value="{{ $data->id }}">{{ $data->nama_mapel }}</option>
                             @empty
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label for="">Guru</label>
                         <select name="id_guru" id="id_guru" class="form-control select2">
-                            <option selected hidden>Pilih Guru</option>
+                            <option value="" selected>Pilih Guru</option>
                             @foreach($guru as $data)
                             <option value="{{ $data->id }}">{{ $data->user->name }}</option>
                             @endforeach
@@ -93,6 +93,20 @@
                                 <input type="text" class="form-control" name="jam_selesai" id="jam_selesai" placeholder="{{ Date('H:i') }}">
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Tema</label>
+                      <select name="tema" id="tema" class="form-control">
+                          <option value="" selected>Pilih Hari</option>
+                          <option value="Aku Hamba Allah">Aku Hamba Allah</option>
+                          <option value="Keluarga Sakinah">Keluarga Sakinah</option>
+                          <option value="Lingkunganku">Lingkunganku</option>
+                          <option value="Binatang">Binatang</option>
+                          <option value="Tanaman Ciptaan Allah">Tanaman Ciptaan Allah</option>
+                          <option value="Kendaraan">Kendaraan</option>
+                          <option value="Alam Semesta">Alam Semesta</option>
+                          <option value="Negaraku">Negaraku</option>
+                      </select>
                     </div>
                 </div>
             </div>

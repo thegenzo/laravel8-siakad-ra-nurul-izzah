@@ -193,6 +193,21 @@ class UserController extends Controller
 
     public function ubah_avatar(Request $request)
     {
+        $rules = [
+            'avatar'                => 'required|image|mimes:jpeg,png,jpg,svg',
+        ];
+
+        $messages = [
+            'avatar.required'                 => 'Foto Wajib Diisi',
+            'avatar.mimes'                    => 'Foto harus berformat gambar (jpeg, png, jpg atau svg)',        
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+        }
+
         $data = $request->all();
 
         if(auth()->user()->level == 'admin') {

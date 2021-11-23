@@ -11,7 +11,7 @@ class Guru extends Model
 
     protected $table = 'gurus';
 
-    protected $fillable = ['id_user', 'jk', 'nip', 'alamat', 'no_hp', 'id_kelas'];
+    protected $fillable = ['id_user', 'jk', 'agama', 'nip', 'tempat_lahir', 'tanggal_lahir', 'alamat', 'no_hp', 'id_kelas'];
 
     public function user()
     {
@@ -28,8 +28,4 @@ class Guru extends Model
         return $this->hasMany(Jadwal::class, 'id_guru');
     }
 
-    public function ekskul()
-    {
-        return $this->hasMany(Ekskul::class, 'id_murid');
-    }
 }

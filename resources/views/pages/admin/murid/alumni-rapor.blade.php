@@ -21,6 +21,44 @@
     </div>
     <div class="row">
       <div class="col-lg-12 col-md-6 col-12 col-sm-6">
+        <div class="card">
+          <div class="card-header">
+              <h4>Data Diri {{ $murid->user->name }} </h4>
+          </div>
+          <div class="card-body">
+              <table class="table table-hover">
+                  <tr>
+                      <td>Nama</td>
+                      <td>:</td>
+                      <td>{{ $murid->user->name }}</td>
+                  </tr>
+                  <tr>
+                      <td>Jenis Kelamin</td>
+                      <td>:</td>
+                      @if($murid->jk == 'L')
+                      <td>Laki-laki</td>
+                      @else
+                      <td>Perempuan</td>
+                      @endif
+                  </tr>
+                  <tr>
+                      <td>Tempat Lahir</td>
+                      <td>:</td>
+                      <td>{{ $murid->tempat_lahir }}</td>
+                  </tr>
+                  <tr>
+                      <td>Tanggal Lahir</td>
+                      <td>:</td>
+                      <td>{{ $murid->tanggal_lahir }}</td>
+                  </tr>
+                  <tr>
+                      <td>Kelas</td>
+                      <td>:</td>
+                      <td>{{ $murid->kelas->nama_kelas }}</td>
+                  </tr>
+              </table>
+          </div>
+      </div>
         @forelse ($rapor as $data)
         <div class="card">
             <div class="card-header">

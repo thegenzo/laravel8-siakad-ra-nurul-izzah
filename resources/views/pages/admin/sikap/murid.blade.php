@@ -87,6 +87,7 @@ Sikap Murid
                         <tr>
                             <th class="text-center">No</th>
                             <th>Nama Mapel</th>
+                            <th class="text-center">Kelas</th>
                             <th class="text-center">Teman</th>
                             <th class="text-center">Guru</th>
                             <th class="text-center">Diri Sendiri</th>
@@ -97,6 +98,7 @@ Sikap Murid
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>{{ $data->mapel->nama_mapel }}</td>
+                            <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
                             <td class="text-center">{{ $data->sikap1 }}</td>
                             <td class="text-center">{{ $data->sikap2 }}</td>
                             <td class="text-center">{{ $data->sikap3 }}</td>

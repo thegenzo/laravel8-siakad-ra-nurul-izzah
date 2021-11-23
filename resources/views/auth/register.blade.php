@@ -24,7 +24,7 @@
         <div class="row">
           <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
             <div class="login-brand">
-              <a href="/"><img src="{{ asset('/assets/img/logo.jpg') }}" alt="logo" width="100" class="shadow-light rounded-circle">  </a>
+              <a href="/"><img src="{{ asset('/assets/img/logo.png') }}" alt="logo" width="100" class="shadow-light rounded-circle">  </a>
             </div>
 
             <div class="card card-primary">
@@ -72,7 +72,7 @@
                         <div class="form-group">
                             <label for="">Avatar</label>
                             <input type="file" class="form-control" name="avatar" id="avatar">
-                            <small class="text-muted">Avatar harus berupa file gambar(JPG, JPEG, PNG)</small>
+                            <small class="text-muted">Avatar harus berupa file gambar(JPG, JPEG, PNG) (Boleh dikosongkan)</small>
                         </div>
                       </div>
                   </div>
@@ -86,9 +86,42 @@
                               <input type="text" class="form-control" placeholder="Masukkan Nama" name="name" id="name">
                           </div>
                           <div class="form-group">
+                            <label for="">NISN</label>
+                            <input type="number" class="form-control" placeholder="Masukkan NISN" name="nisn" id="nisn">
+                            <small class="text-muted">Jika belum ada, boleh dikosongkan</small>
+                          </div>
+                          <div class="form-group">
+                              <label for="">NIS</label>
+                              <input type="number" class="form-control" placeholder="Masukkan NIS" name="nis" id="nis">
+                              <small class="text-muted">Jika belum ada, boleh dikosongkan</small>
+                          </div>
+                          <div class="form-group">
+                              <label for="">NIK</label>
+                              <input type="number" class="form-control" placeholder="Masukkan NIK" name="nik" id="nik">
+                          </div>
+                          <div class="form-group">
                               <label for="">Jenis Kelamin</label>
                               <select name="jk" id="jk" class="form-control">
-                                  <option selected hidden>Pilih JK</option>
+                                  <option value="" selected>Pilih JK</option>
+                                  <option value="L">Laki-laki</option>
+                                  <option value="P">Perempuan</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label for="">Agama</label>
+                              <select name="agama" id="agama" class="form-control">
+                                  <option value="" selected hidden>Pilih Agama</option>
+                                  <option value="Islam">Islam</option>
+                                  <option value="Kristen Protestan">Kristen Protestan</option>
+                                  <option value="Kristen Katolik">Kristen Katolik</option>
+                                  <option value="Hindu">Hindu</option>
+                                  <option value="Buddha">Buddha</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label for="">Jenis Kelamin</label>
+                              <select name="jk" id="jk" class="form-control">
+                                  <option value="" selected hidden>Pilih JK</option>
                                   <option value="L">Laki-laki</option>
                                   <option value="P">Perempuan</option>
                               </select>
@@ -104,7 +137,7 @@
                           <div class="form-group">
                               <label for="">Kelas</label>
                               <select name="id_kelas" id="id_kelas" class="form-control">
-                                  <option selected hidden>Pilih Kelas</option>
+                                  <option value="" selected hidden>Pilih Kelas</option>
                                   @foreach ($kelas as $data)
                                   <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
                                   @endforeach

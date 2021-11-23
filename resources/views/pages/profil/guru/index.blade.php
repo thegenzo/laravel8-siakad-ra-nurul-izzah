@@ -14,21 +14,25 @@
       <h1>Profil</h1>
     </div>
     <div class="row">
+      <div class="col-md-12">
+        @if (count($errors) > 0)
+        <div class="alert alert-danger alert-has-icon">
+            <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+            <div class="alert-body">
+              <div class="alert-title">Gagal Simpan Data</div>
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+        @endif
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-7 col-md-6 col-12 col-sm-7">
         <div class="card">
-          @if (count($errors) > 0)
-          <div class="alert alert-danger alert-has-icon">
-              <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
-              <div class="alert-body">
-                <div class="alert-title">Gagal Simpan Data</div>
-                <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              </div>
-            </div>
-          @endif
             <form method="POST" action="/profil">
                 @csrf
                 <div class="card-header">

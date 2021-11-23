@@ -87,6 +87,7 @@ Nilai Murid
                         <tr>
                             <th class="text-center">No</th>
                             <th>Nama Mapel</th>
+                            <th class="text-center">Kelas</th>
                             <th class="text-center">Tes 1</th>
                             <th class="text-center">Tes 2</th>
                             <th class="text-center">Tes 3</th>
@@ -99,6 +100,7 @@ Nilai Murid
                         <tr>
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>{{ $data->mapel->nama_mapel }}</td>
+                            <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
                             <td class="text-center">{{ $data->tes1 }}</td>
                             <td class="text-center">{{ $data->tes2 }}</td>
                             <td class="text-center">{{ $data->tes3 }}</td>

@@ -11,7 +11,7 @@ class Ekskul extends Model
 
     protected $table = 'ekskuls';
 
-    protected $fillable = ['id_murid', 'id_guru', 'id_kelas', 'kegiatan_ekskul', 'hasil'];
+    protected $fillable = ['id_murid', 'id_kelas', 'eks1', 'eks2', 'eks3', 'eks4', 'eks5', 'eks6', 'eks7', 'eks8'];
 
     public function murid()
     {
@@ -23,8 +23,4 @@ class Ekskul extends Model
         return $this->belongsTo(Kelas::class, 'id_kelas');
     }
 
-    public function guru()
-    {
-        return $this->belongsTo(Guru::class, 'id_guru');
-    }
 }

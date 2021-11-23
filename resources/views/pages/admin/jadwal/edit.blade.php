@@ -35,7 +35,8 @@
             </div>
           </div>
         @endif
-        <form action="{{ route('jadwal.store') }}" method="post">
+        <form action="{{ route('jadwal.update', $jadwal->id) }}" method="POST">
+            @method('PUT')
             @csrf
             <div class="card">
                 <div class="card-header">
@@ -89,6 +90,19 @@
                                 <input type="text" class="form-control" name="jam_selesai" id="jam_selesai" value="{{ $jadwal->jam_selesai }}">
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="">Tema</label>
+                      <select name="tema" id="tema" class="form-control">
+                          <option value="Aku Hamba Allah" {{ $jadwal->tema == 'Aku Hamba Allah' ? 'selected' : '' }}>Aku Hamba Allah</option>
+                          <option value="Keluarga Sakinah" {{ $jadwal->tema == 'Keluarga Sakinah' ? 'selected' : '' }}>Keluarga Sakinah</option>
+                          <option value="Lingkunganku" {{ $jadwal->tema == 'Lingkunganku' ? 'selected' : '' }}>Lingkunganku</option>
+                          <option value="Binatang" {{ $jadwal->tema == 'Binatang' ? 'selected' : '' }}>Binatang</option>
+                          <option value="Tanaman Ciptaan Allah" {{ $jadwal->tema == 'Tanaman Ciptaan Allah' ? 'selected' : '' }}>Tanaman Ciptaan Allah</option>
+                          <option value="Kendaraan" {{ $jadwal->tema == 'Kendaraan' ? 'selected' : '' }}>Kendaraan</option>
+                          <option value="Alam Semesta" {{ $jadwal->tema == 'Alam Semesta' ? 'selected' : '' }}>Alam Semesta</option>
+                          <option value="Negaraku" {{ $jadwal->tema == 'Negaraku' ? 'selected' : '' }}>Negaraku</option>
+                      </select>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,9 @@
 </head>
 
 <body class="layout-3">
+  <div class="row">
+    <div class="card"></div>
+  </div>
   <div id="app">
     @include('pages.homepage.include.navbar')
     @yield('content')

@@ -32,31 +32,53 @@
           </div>
           <div class="card-body">
             <table class="table table-striped table-hover" id="datatable">
-                <thead>
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th>Ruang Kelas</th>
-                        <th class="text-center">Lihat Guru</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($kelas as $data)
-                    <tr>
-                        <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $data->nama_kelas }}</td>
-                        <td class="text-center">
-                            <a href="{{ route('guru.kelas', $data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Guru">
-                                <i class="fas fa-eye" ></i>
-                            </a>
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="3" style="font-weight: bold; font-size: 18px;" class="text-center">Data Kelas Kosong</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
+              <thead>
+                  <tr>
+                      <th class="text-center">No</th>
+                      <th>Nama Guru</th>
+                      <th class="text-center">Jenis Kelamin</th>
+                      <th class="text-center">Avatar</th>
+                      <th class="text-center">NUPTK</th>
+                      <th>Alamat</th>
+                      <th class="text-center">Nomor Handphone</th>
+                      <th class="text-center">Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @forelse ($guru as $data)
+                  <tr>
+                      <td class="text-center">{{ $loop->iteration }}</td>
+                      <td>{{ $data->user->name }}</td>
+                      <td class="text-center">{{ $data->jk }}</td>
+                      <td class="text-center">
+                          <img src="{{ asset('uploads/guru/'.$data->user->avatar) }}" alt="" style="width: 100px;">
+                      </td>
+                      <td class="text-center">{{ $data->nip }}</td>
+                      <td>{{ $data->alamat }}</td>
+                      <td class="text-center">{{ $data->no_hp }}</td>
+                      <td class="text-center">
+                          <a href="{{ route('guru.show', $data->id) }} " class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Detail">
+                              <i class="fas fa-eye" ></i>
+                          </a>
+                          <a href="{{ route('guru.edit', $data->id) }} " class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Edit">
+                              <i class="fa fa-pencil-alt" ></i>
+                          </a>
+                          <form action="{{ route('guru.destroy', $data->id) }}" method="POST" class="d-inline swal-confirm">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger swal-confirm" type="submit" data-id="{{ $data->id }}" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                <i class="fas fa-trash swal-confirm"></i>
+                            </button>
+                          </form>
+                      </td>
+                  </tr>
+                  @empty
+                  <tr>
+                      <td colspan="8" style="font-weight: bold; font-size: 18px;" class="text-center">Data Guru Kosong</td>
+                  </tr>
+                  @endforelse
+              </tbody>
+          </table>
           </div>
         </div>
       </div>

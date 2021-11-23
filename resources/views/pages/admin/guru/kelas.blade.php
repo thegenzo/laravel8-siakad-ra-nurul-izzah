@@ -36,7 +36,7 @@ Data Guru Kelas {{$kelas->nama_kelas}}
                         <th>Nama Guru</th>
                         <th class="text-center">Jenis Kelamin</th>
                         <th class="text-center">Avatar</th>
-                        <th class="text-center">NIP</th>
+                        <th class="text-center">NUPTK</th>
                         <th>Alamat</th>
                         <th class="text-center">Nomor Handphone</th>
                         <th class="text-center">Action</th>

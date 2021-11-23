@@ -1,50 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>@yield('title') &mdash; SIAKAD RA Nurul Izzah </title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <title>@yield('title') - RA Nurul Izzah</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-  <!-- CSS Libraries -->
+  <!-- Favicons -->
+  <link href="{{ asset('/home_assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('/home_assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('/assets/css/components.css') }}">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('/home_assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/home_assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('/home_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/home_assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('/home_assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/home_assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ asset('/home_assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ asset('/home_assets/css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Mentor - v4.6.1
+  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body class="layout-3">
-  <div id="app">
-    <div class="main-wrapper container">
-      @include('pages.homepage.include.navbar')
-      @yield('content')
-      <footer class="main-footer">
-        <div class="footer-left">
-          Copyright &copy; 2021 <div class="bullet"></div> Universitas Dayanu Ikhsanuddin
+<body>
+
+  @include('pages.homepage.include.navbar')
+
+  @yield('content')
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-12 footer-contact">
+            <h3>Alamat</h3>
+            <p>
+              Jalan Mawaambe, Kota Baubau <br>
+              Kelurahan Katobengke<br>
+              Kecamatan Betoambari
+               <br><br>
+              <!-- <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br> -->
+            </p>
+          </div>
+
+          <div class="col-lg-6 col-md-6 footer-links">
+            <h4>Pintasan</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Profil</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Visi Misi dan Tujuan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Struktur Organisasi</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Data Guru</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Baca Artikel</a></li>
+            </ul>
+          </div>
+
         </div>
-        <div class="footer-right">
-          Teknik Informatika
-        </div>
-      </footer>
+      </div>
     </div>
-  </div>
 
-  <!-- General JS Scripts -->
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="{{ asset('/assets/js/stisla.js') }}"></script>
-  @include('sweetalert::alert')
+    <div class="container d-md-flex py-4">
 
-  <!-- JS Libraies -->
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Universitas Dayanu Ikhsanuddin</span></strong>. All Rights Reserved
+        </div>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
 
-  <!-- Page Specific JS File -->
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Vendor JS Files -->
+  <script src="{{ asset('/home_assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset('/home_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('/home_assets/vendor/purecounter/purecounter.js') }}"></script>
+  <script src="{{ asset('/home_assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
 
-  <!-- Template JS File -->
-  <script src="{{ asset('/assets/js/scripts.js') }}"></script>
-  <script src="{{ asset('/assets/js/custom.js') }}"></script>
+  <!-- Template Main JS File -->
+  <script src="{{ asset('/home_assets/js/main.js') }}"></script>
+
 </body>
+
 </html>

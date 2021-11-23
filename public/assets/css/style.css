@@ -1948,6 +1948,13 @@ ul.nav-tabs li.nav-item a.nav-link.active i {
   font-size: 13px;
   line-height: 24px; }
 
+.carousel-item{
+  height: 950px;
+} 
+.carousel-item img{
+  height: 950px;
+}
+
 /* 4. Theme Style */
 /* 4.1 Misc */
 :root {
@@ -2424,6 +2431,7 @@ pre {
   padding-left: 35px;
   padding-right: 35px; }
 
+
 @media (max-width: 575.98px) {
   .section .section-title {
     font-size: 14px; }
@@ -2754,6 +2762,11 @@ body.layout-3 .main-content {
   padding-left: 0;
   padding-right: 0;
   padding-top: 170px; }
+
+body.layout-3 .main-content-home {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 77px; }
 
 body.layout-3 .main-footer {
   padding-left: 0;

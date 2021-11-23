@@ -54,6 +54,16 @@
                         </select>
                     </div>
                     <div class="form-group">
+                      <label for="">Agama</label>
+                      <select name="agama" id="agama" class="form-control">
+                          <option value="Islam" {{ $guru->agama == 'Islam' ? 'selected' : '' }}>Islam</option>
+                          <option value="Kristen Protestan" {{ $guru->agama == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+                          <option value="Kristen Katolik" {{ $guru->agama == 'Kristen Katolik' ? 'selected' : '' }}>Kristen Katolik</option>
+                          <option value="Hindu" {{ $guru->agama == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                          <option value="Buddha" {{ $guru->agama == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Kelas</label>
                         <select name="id_kelas" id="id_kelas" class="form-control">
                             @foreach ($kelas as $data)
@@ -62,8 +72,16 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Nomor Induk Pegawai (NIP)</label>
+                        <label for="">Nomor Unik Pendidik dan Tenaga Kependidikan (NUPTK)</label>
                         <input type="number" class="form-control" value="{{ $guru->nip }}" name="nip" id="nip">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Tempat Lahir</label>
+                      <input type="text" class="form-control" value="{{ $guru->tempat_lahir }}" name="tempat_lahir" id="tempat_lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tanggal Lahir</label>
+                        <input type="date" class="form-control" value="{{ $guru->tanggal_lahir }}"name="tanggal_lahir" id="tanggal_lahir">
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>

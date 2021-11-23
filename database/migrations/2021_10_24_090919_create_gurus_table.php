@@ -21,7 +21,10 @@ class CreateGurusTable extends Migration
             $table->foreign('id_user')->references('id')->on('users')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->enum('jk', ['L', 'P']);
+            $table->string('agama');
             $table->string('nip')->unique();
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->string('no_hp');
 

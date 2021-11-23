@@ -24,12 +24,15 @@ class CreateEkskulsTable extends Migration
             $table->unsignedBigInteger('id_kelas');
             $table->foreign('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            // relasi tabel nilais dan gurus
-            $table->unsignedBigInteger('id_guru');
-            $table->foreign('id_guru')->references('id')->on('gurus')->constrained()->onDelete('cascade')->onUpdate('cascade');
-
-            $table->string('kegiatan_ekskul');
-            $table->enum('hasil', ['B', 'C', 'K']);
+            $table->string('eks1');
+            $table->string('eks2');
+            $table->string('eks3');
+            $table->string('eks4');
+            $table->string('eks5');
+            $table->string('eks6');
+            $table->string('eks7');
+            $table->string('eks8');
+            
             $table->timestamps();
         });
     }

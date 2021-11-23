@@ -36,8 +36,6 @@ class JadwalController extends Controller
         return view('pages.admin.jadwal.kelas', compact('kelas', 'jadwal'));
     }
 
-
-
     /**
      * Show the form for creating a new resource.
      *

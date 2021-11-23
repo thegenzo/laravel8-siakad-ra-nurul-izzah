@@ -10,6 +10,7 @@ use App\Models\Murid;
 use App\Models\Kelas;
 use App\Models\Guru;
 use App\Models\Mapel;
+use App\Models\Ekskul;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -48,8 +49,9 @@ class RaporController extends Controller
         $nilai = Nilai::where('id_murid', $id)->get();
         $sikap = Sikap::where('id_murid', $id)->get();
         $rapor = Rapor::where('id_murid', $id)->get();
+        $ekskul = Ekskul::where('id_murid', $id)->get();
 
-        return view('pages.admin.rapor.murid', compact('murid', 'nilai', 'sikap', 'rapor', 'kelas'));
+        return view('pages.admin.rapor.murid', compact('murid', 'nilai', 'sikap', 'rapor', 'kelas', 'ekskul'));
     }
 
     /**
@@ -149,7 +151,7 @@ class RaporController extends Controller
             $data['id_kelas'] = $murid->kelas->id;
             Rapor::create($data);
 
-            // proses pindah kelas
+            // proses pindah kelas B1
             Murid::where('id', $id)->update(['id_kelas' => 2]);
 
         } else if($request->status == 'Pindah di Kelas B2') {
@@ -158,14 +160,19 @@ class RaporController extends Controller
             $data['id_kelas'] = $murid->kelas->id;
             Rapor::create($data);
 
-            // proses pindah kelas
+            // proses pindah kelas B2
             Murid::where('id', $id)->update(['id_kelas' => 3]);
 
         } else { // jika ingin lulus
             $data = $request->all();
+            
             $data['id_murid'] = $murid->id;
             $data['id_kelas'] = $kelas->id;
             Rapor::create($data);
+
+            // proses menjadikan murid sebagai alumni
+            $tahunLulus = date('Y'); // tahun sekarang
+            Murid::where('id', $id)->update(['status_lulus' => '1', 'tahun_lulus' => $tahunLulus]);
         }
 
         Alert::success('Berhasil', 'Pengisian Rapor Berhasil Dilakukan');

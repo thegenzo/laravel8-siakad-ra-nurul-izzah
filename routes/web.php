@@ -15,6 +15,8 @@ use App\Http\Controllers\SikapController;
 use App\Http\Controllers\RaporController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\EkskulController;
+use App\Http\Controllers\HomepageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +28,14 @@ use App\Http\Controllers\ArtikelController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Halaman homepage dengan konten artikel
-Route::view('/', 'pages.homepage.home');
+// Halaman homepage
+Route::get('/', [HomepageController::class, 'home']);
+Route::view('/profil-tk', 'pages.homepage.profil-tk');
+Route::view('/visi-misi', 'pages.homepage.visi-misi');
+Route::view('/struktur-organisasi', 'pages.homepage.struktur-organisasi');
+Route::get('/data-guru', [GuruController::class, 'dataGuru']);
+Route::get('/data-guru/detail/{id}', [GuruController::class, 'detailGuru']);
+Route::get('/data-kepsek/detail/{id}', [GuruController::class, 'detailKepsek']);
 Route::get('/baca-artikel', [ArtikelController::class, 'homeArtikel']);
 Route::get('/baca-artikel/baca/{id}', [ArtikelController::class, 'bacaArtikel'])->name('baca_artikel');
 
@@ -70,6 +78,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek']], function() {
     Route::resource('sikap', SikapController::class);
     Route::get('/sikap/kelas/{id}', [SikapController::class, 'kelas'])->name('sikap.kelas');
     Route::get('/sikap/murid/{id}', [SikapController::class, 'murid'])->name('sikap.murid');
+    Route::resource('ekskul', EkskulController::class);
+    Route::get('/ekskul/kelas/{id}', [EkskulController::class, 'kelas'])->name('ekskul.kelas');
+    Route::get('/ekskul/murid/{id}', [EkskulController::class, 'murid'])->name('ekskul.murid');
     Route::resource('rapor', RaporController::class);
     Route::get('/rapor/kelas/{id}', [RaporController::class, 'kelas'])->name('rapor.kelas');
     Route::get('/rapor/kelas/{idKelas}/murid/{id}', [RaporController::class, 'murid'])->name('rapor.murid');

@@ -23,19 +23,22 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>Kelas</th>
                         <th>Jam Pelajaran</th>
                         <th>Mata Pelajaran</th>
+                        <th>Tema</th>
                         <th>Guru</th>
-                        <th>Kelas</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($jadwal as $data)
                     <tr>
+                        <td>{{ $data->kelas->nama_kelas }}</td>
                         <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
                         <td>{{ $data->mapel->nama_mapel }}</td>
+                        <td>{{ $data->tema }}</td>
                         <td>{{ $data->guru->user->name }}</td>
-                        <td>{{ $data->kelas->nama_kelas }}</td>
                     </tr>
                     @empty
                     <tr>

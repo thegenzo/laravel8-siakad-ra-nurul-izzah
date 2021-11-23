@@ -33,6 +33,7 @@ Data Jadwal Kelas {{$kelas->nama_kelas}}
                 <thead>
                     <tr>
                         <th class="text-center">No</th>
+                        <th>Tema</th>
                         <th>Hari</th>
                         <th>Jam Pelajaran</th>
                         <th>Mapel</th>
@@ -44,6 +45,7 @@ Data Jadwal Kelas {{$kelas->nama_kelas}}
                     @forelse ($jadwal as $data)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>{{ $data->tema }}</td>
                         <td>{{ $data->hari->nama_hari }}</td>
                         <td>{{ $data->jam_mulai }} - {{ $data->jam_selesai }}</td>
                         <td>{{ $data->mapel->nama_mapel }}</td>

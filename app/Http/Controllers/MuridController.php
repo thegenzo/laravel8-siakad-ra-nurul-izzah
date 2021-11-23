@@ -9,6 +9,7 @@ use App\Models\Rapor;
 use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Murid;
+use App\Models\Ekskul;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -62,12 +63,23 @@ class MuridController extends Controller
             'email'                 => 'required|email|unique:users',
             'password'              => 'required|min:8|same:konfirmasi_password',
             'konfirmasi_password'   => 'required|min:8',
+            'nisn'                  => 'unique:murids',
+            'nis'                   => 'unique:murids',  
+            'nik'                   => 'required|numeric|unique:murids',       
             'jk'                    => 'required',
+            'agama'                 => 'required',
             'tempat_lahir'          => 'required|string',
             'tanggal_lahir'         => 'required|date',
             'id_kelas'              => 'required',
-            'nama_ortu'             => 'required',
-            'pekerjaan_ortu'        => 'required',
+            'no_kk'                 => 'required',
+            'nik_ayah'              => 'required|numeric',
+            'nik_ibu'               => 'required|numeric',
+            'nama_ayah'             => 'required',
+            'nama_ibu'              => 'required',
+            'pekerjaan_ayah'        => 'required',
+            'pekerjaan_ibu'         => 'required',
+            'pendidikan_ayah'       => 'required',
+            'pendidikan_ibu'        => 'required',
             'alamat'                => 'required',
             'no_hp'                 => 'required|numeric'
         ];
@@ -83,12 +95,24 @@ class MuridController extends Controller
             'password.same'                 => 'Konfirmasi Password Harus Sama Dengan Password',
             'konfirmasi_password.required'  => 'Konfirmasi password wajib diisi',
             'konfirmasi_password.min'       => 'Konfirmasi password minimal 8 karakter',
+            'nisn.unique'                   => 'NISN Sudah Terdaftar',
+            'nis.unique'                    => 'NIS Sudah Terdaftar',
+            'nik.required'                  => 'NIK Wajib Diisi',
+            'nik.unique'                    => 'NIK Sudah Terdaftar',
             'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
+            'agama.required'                => 'Agama Wajib Diisi',
             'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
             'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
             'id_kelas.required'             => 'Kelas Wajib Diisi',
-            'nama_ortu.required'            => 'Nama Orang Tua Wajib Diisi',
-            'pekerjaan_ortu.required'       => 'Pekerjaan Tua Wajib Diisi',
+            'no_kk.required'                => 'Nomor Kartu Keluarga Wajib Diisi',
+            'nik_ayah.required'             => 'NIK Ayah Wajib Diisi',
+            'nik_ibu.required'              => 'NIK Ibu Wajib Diisi',
+            'nama_ayah.required'            => 'Nama Ayah Wajib Diisi',
+            'nama_ibu.required'             => 'Nama Ibu Wajib Diisi',
+            'pekerjaan_ayah.required'       => 'Pekerjaan Ayah Wajib Diisi',
+            'pekerjaan_ibu.required'        => 'Pekerjaan Ibu Wajib Diisi',
+            'pendidikan_ayah.required'      => 'Pendidikan Ayah Wajib Diisi',
+            'pendidikan_ibu.required'       => 'Pendidikan Ibu Wajib Diisi',   
             'alamat.required'               => 'Alamat Wajib Diisi',
             'no_hp.required'                => 'Nomor Handphone Wajib Diisi',
             'no_hp.numeric'                 => 'Nomor Handphone Harus Berupa Angka'                 
@@ -184,24 +208,49 @@ class MuridController extends Controller
     {
         $rules = [
             'name'                  => 'required',
+            'nisn'                  => Rule::unique('murids')->ignore($id),
+            'nis'                   => Rule::unique('murids')->ignore($id),  
+            'nik'                   => Rule::unique('murids')->ignore($id),       
             'jk'                    => 'required',
+            'agama'                 => 'required',
             'tempat_lahir'          => 'required|string',
             'tanggal_lahir'         => 'required|date',
             'id_kelas'              => 'required',
-            'nama_ortu'             => 'required',
-            'pekerjaan_ortu'        => 'required',
+            'no_kk'                 => 'required',
+            'nik_ayah'              => 'required|numeric',
+            'nik_ibu'               => 'required|numeric',
+            'nama_ayah'             => 'required',
+            'nama_ibu'              => 'required',
+            'pekerjaan_ayah'        => 'required',
+            'pekerjaan_ibu'         => 'required',
+            'pendidikan_ayah'       => 'required',
+            'pendidikan_ibu'        => 'required',
             'alamat'                => 'required',
             'no_hp'                 => 'required|numeric'
         ];
 
         $messages = [
             'name.required'                 => 'Nama Wajib Diisi',
+            'nisn.required'                 => 'NISN Wajib Diisi',
+            'nisn.unique'                   => 'NISN Sudah Terdaftar',
+            'nis.required'                  => 'NIS Wajib Diisi',
+            'nis.unique'                    => 'NIS Sudah Terdaftar',
+            'nik.required'                  => 'NIK Wajib Diisi',
+            'nik.unique'                    => 'NIK Sudah Terdaftar',
             'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
+            'agama.required'                => 'Agama Wajib Diisi',
             'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
             'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
             'id_kelas.required'             => 'Kelas Wajib Diisi',
-            'nama_ortu.required'            => 'Nama Orang Tua Wajib Diisi',
-            'pekerjaan_ortu.required'       => 'Pekerjaan Tua Wajib Diisi',
+            'no_kk.required'                => 'Nomor Kartu Keluarga Wajib Diisi',
+            'nik_ayah.required'             => 'NIK Ayah Wajib Diisi',
+            'nik_ibu.required'              => 'NIK Ibu Wajib Diisi',
+            'nama_ayah.required'            => 'Nama Ayah Wajib Diisi',
+            'nama_ibu.required'             => 'Nama Ibu Wajib Diisi',
+            'pekerjaan_ayah.required'       => 'Pekerjaan Ayah Wajib Diisi',
+            'pekerjaan_ibu.required'        => 'Pekerjaan Ibu Wajib Diisi',
+            'pendidikan_ayah.required'      => 'Pendidikan Ayah Wajib Diisi',
+            'pendidikan_ibu.required'       => 'Pendidikan Ibu Wajib Diisi',   
             'alamat.required'               => 'Alamat Wajib Diisi',
             'no_hp.required'                => 'Nomor Handphone Wajib Diisi',
             'no_hp.numeric'                 => 'Nomor Handphone Harus Berupa Angka'                 
@@ -214,7 +263,11 @@ class MuridController extends Controller
         }
 
         $murid = Murid::find($id);
+        $murid->nisn = $request->nisn;
+        $murid->nis = $request->nis;
+        $murid->nik = $request->nik;
         $murid->jk = $request->jk;
+        $murid->agama = $request->agama;
         $murid->tempat_lahir = $request->tempat_lahir;
         $murid->tanggal_lahir = $request->tanggal_lahir;
         $murid->id_kelas = $request->id_kelas;
@@ -272,8 +325,8 @@ class MuridController extends Controller
     public function alumni_rapor($id)
     {
         $rapor = Rapor::where('id_murid', $id)->get();
-
-        return view('pages.admin.murid.alumni-rapor', compact('rapor'));
+        $murid = Murid::where('id', $id)->first();
+        return view('pages.admin.murid.alumni-rapor', compact('rapor', 'murid'));
     }
 
     public function nilai_saya()
@@ -301,7 +354,8 @@ class MuridController extends Controller
         $nilai = Nilai::where('id_murid', $murid->id)->get();
         $sikap = Sikap::where('id_murid', $murid->id)->get();
         $rapor = Rapor::where('id_murid', $murid->id)->get();
+        $ekskul = Ekskul::where('id_murid', $murid->id)->get();
 
-        return view('pages.murid.rapor', compact('rapor', 'nilai', 'sikap', 'murid'));
+        return view('pages.murid.rapor', compact('rapor', 'nilai', 'sikap', 'murid', 'ekskul'));
     }
 }

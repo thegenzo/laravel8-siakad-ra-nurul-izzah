@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $pengumuman = Pengumuman::where('id', 1)->first();
         $hari = date('w');
         $jam = date('H:i');
-        $jadwal = Jadwal::OrderBy('jam_mulai')->OrderBy('jam_selesai')->OrderBy('id_kelas')->where('id_hari', $hari)->get();
+        $jadwal = Jadwal::OrderBy('id_kelas')->OrderBy('jam_mulai')->OrderBy('jam_selesai')->where('id_hari', $hari)->get();
 
         return view('pages.dashboard', compact('pengumuman', 'jadwal'));
 

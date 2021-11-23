@@ -62,7 +62,7 @@
                   <div class="form-group">
                       <label for="">Avatar</label>
                       <input type="file" class="form-control" name="avatar" id="avatar">
-                      <small class="text-muted">Avatar harus berupa file gambar(JPG, JPEG, PNG)</small>
+                      <small class="text-muted">Avatar harus berupa file gambar(JPG, JPEG, PNG) (Boleh dikosongkan)</small>
                   </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     <div class="form-group">
                         <label for="">Jenis Kelamin</label>
                         <select name="jk" id="jk" class="form-control">
-                            <option selected hidden>Pilih JK</option>
+                            <option value="" selected>Pilih JK</option>
                             <option value="L">Laki-laki</option>
                             <option value="P">Perempuan</option>
                         </select>

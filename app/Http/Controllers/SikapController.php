@@ -131,12 +131,20 @@ class SikapController extends Controller
         $data = $request->all();
         $data['id_murid'] = $murid->id;
         $data['id_kelas'] = $murid->kelas->id;
-        Sikap::create($data);
+        if(Sikap::where('id_murid', $murid->id)->where('id_kelas', $kelas->id)->where('id_mapel', $request->id_mapel)->exists()) {
+            Alert::error('Gagal', 'Nilai Sikap '. Mapel::where('id', $request->id_mapel)->first()->nama_mapel. ' Sudah Ada');
 
-        Alert::success('Berhasil', 'Sikap Murid Berhasil Diinput');
+            return redirect()->back();
+        }
+        else {
+            Sikap::create($data);
 
-        return redirect()->back();
+            Alert::success('Berhasil', 'Sikap Murid Berhasil Diinput');
+
+            return redirect()->back();
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

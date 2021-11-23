@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kelas;
+use App\Models\Kepsek;
 use App\Models\Guru;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -20,8 +21,8 @@ class GuruController extends Controller
      */
     public function index()
     {
-        $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
-        return view('pages.admin.guru.index', compact('kelas'));
+        $guru = Guru::all();
+        return view('pages.admin.guru.index', compact('guru'));
     }
 
     public function kelas($id)
@@ -59,6 +60,9 @@ class GuruController extends Controller
             'password'              => 'required|min:8|same:konfirmasi_password',
             'konfirmasi_password'   => 'required|min:8',
             'jk'                    => 'required',
+            'agama'                 => 'required',
+            'tempat_lahir'          => 'required|string',
+            'tanggal_lahir'         => 'required|date',
             'nip'                   => 'required|numeric',
             'id_kelas'              => 'required',
             'alamat'                => 'required',
@@ -77,6 +81,9 @@ class GuruController extends Controller
             'konfirmasi_password.required'  => 'Konfirmasi password wajib diisi',
             'konfirmasi_password.min'       => 'Konfirmasi password minimal 8 karakter',
             'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
+            'agama.required'                => 'Agama Wajib Diisi',
+            'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
+            'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
             'nip.required'                  => 'NIP Wajib Diisi',
             'nip.numeric'                   => 'NIP Harus Berupa Angka',
             'id_kelas.required'             => 'Kelas Wajib Diisi',
@@ -175,6 +182,9 @@ class GuruController extends Controller
         $rules = [
             'name'                  => 'required',
             'jk'                    => 'required',
+            'agama'                 => 'required',
+            'tempat_lahir'          => 'required|string',
+            'tanggal_lahir'         => 'required|date',
             'nip'                   => 'required|numeric',Rule::unique('gurus')->ignore($id),
             'id_kelas'              => 'required',
             'alamat'                => 'required',
@@ -184,6 +194,9 @@ class GuruController extends Controller
         $messages = [
             'name.required'                 => 'Nama Wajib Diisi',
             'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
+            'agama.required'                => 'Agama Wajib Diisi',
+            'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
+            'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
             'nip.required'                  => 'NIP Wajib Diisi',
             'nip.unique'                    => 'NIP Sudah Terdaftar',
             'nip.numeric'                   => 'NIP Harus Berupa Angka',
@@ -201,6 +214,9 @@ class GuruController extends Controller
 
         $guru = Guru::find($id);
         $guru->jk = $request->jk;
+        $guru->agama = $request->agama;
+        $guru->tempat_lahir = $request->tempat_lahir;
+        $guru->tanggal_lahir = $request->tanggal_lahir;
         $guru->nip = $request->nip;
         $guru->id_kelas = $request->id_kelas;
         $guru->alamat = $request->alamat;
@@ -227,18 +243,6 @@ class GuruController extends Controller
         if($guru->jadwal()->count()) {
             Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Jadwal');
             return back();
-        } else if($guru->nilai()->count()) {
-            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Nilai Murid');
-            return back();
-        } else if ($guru->sikap()->count()) {
-            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Sikap Murid');
-            return back();
-        } else if ($guru->rapor()->count()) {
-            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Rapor Murid');
-            return back();
-        } else if ($guru->ekskul()->count()) {
-            Alert::error('Gagal', 'Guru Memiliki Data Terkait dengan Ekskul Murid');
-            return back();
         } else {
             $user = User::where('id', $guru->id_user)->delete();
             $guru->delete();
@@ -247,5 +251,24 @@ class GuruController extends Controller
             return redirect('/guru');
         }
 
+    }
+
+    public function dataGuru()
+    {
+        $kepsek = Kepsek::where('id', 1)->first();
+        $guru = Guru::all();
+        return view('pages.homepage.guru', compact('guru', 'kepsek'));
+    }
+
+    public function detailGuru($id)
+    {
+        $guru = Guru::find($id);
+        return view('pages.homepage.detail-guru', compact('guru'));
+    }
+
+    public function detailKepsek($id)
+    {
+        $kepsek = Kepsek::where('id', 1)->first();
+        return view('pages.homepage.detail-kepsek', compact('kepsek'));
     }
 }

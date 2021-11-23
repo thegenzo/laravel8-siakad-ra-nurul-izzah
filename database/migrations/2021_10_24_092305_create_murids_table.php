@@ -20,7 +20,11 @@ class CreateMuridsTable extends Migration
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
+            $table->string('nisn')->unique();
+            $table->string('nis')->unique();
+            $table->string('nik')->unique();
             $table->enum('jk', ['L', 'P']);
+            $table->string('agama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
 
@@ -28,11 +32,20 @@ class CreateMuridsTable extends Migration
             $table->unsignedBigInteger('id_kelas');
             $table->foreign('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('nama_ortu');
-            $table->string('pekerjaan_ortu');
+            $table->string('no_kk');
+            $table->string('nik_ayah');
+            $table->string('nik_ibu');
+            $table->string('nama_ayah');
+            $table->string('nama_ibu');
+            $table->string('pekerjaan_ayah');
+            $table->string('pekerjaan_ibu');
+            $table->string('pendidikan_ayah');
+            $table->string('pendidikan_ibu');
+
             $table->text('alamat');
             $table->enum('status_lulus', ['1', '0']);
             $table->string('no_hp');
+            $table->string('tahun_lulus')->nullable();
 
             $table->timestamps();
         });

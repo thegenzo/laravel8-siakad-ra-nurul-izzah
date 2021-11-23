@@ -32,6 +32,7 @@ Data Alumni
                 <thead>
                     <tr>
                         <th class="text-center">No</th>
+                        <th class="text-center">Tahun Lulus</th>
                         <th>Nama Murid</th>
                         <th class="text-center">Jenis Kelamin</th>
                         <th class="text-center">Avatar</th>
@@ -44,6 +45,7 @@ Data Alumni
                     @forelse ($alumni as $data)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $data->tahun_lulus }}</td>
                         <td>{{ $data->user->name }}</td>
                         <td class="text-center">{{ $data->jk }}</td>
                         <td class="text-center">

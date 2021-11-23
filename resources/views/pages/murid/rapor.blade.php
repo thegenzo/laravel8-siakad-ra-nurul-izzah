@@ -87,6 +87,7 @@ Nilai Murid
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th>Nama Mapel</th>
+                                    <th class="text-center">Kelas</th>
                                     <th class="text-center">Tes 1</th>
                                     <th class="text-center">Tes 2</th>
                                     <th class="text-center">Tes 3</th>
@@ -99,6 +100,7 @@ Nilai Murid
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->mapel->nama_mapel }}</td>
+                                    <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
                                     <td class="text-center">{{ $data->tes1 }}</td>
                                     <td class="text-center">{{ $data->tes2 }}</td>
                                     <td class="text-center">{{ $data->tes3 }}</td>
@@ -126,6 +128,7 @@ Nilai Murid
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th>Nama Mapel</th>
+                                    <th class="text-center">Kelas</th>
                                     <th class="text-center">Teman</th>
                                     <th class="text-center">Guru</th>
                                     <th class="text-center">Diri Sendiri</th>
@@ -136,6 +139,7 @@ Nilai Murid
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->mapel->nama_mapel }}</td>
+                                    <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
                                     <td class="text-center">{{ $data->sikap1 }}</td>
                                     <td class="text-center">{{ $data->sikap2 }}</td>
                                     <td class="text-center">{{ $data->sikap3 }}</td>
@@ -143,6 +147,53 @@ Nilai Murid
                                 @empty
                                 <tr>
                                     <td colspan="8" style="font-weight: bold; font-size: 18px;" class="text-center">Data Nilai Sikap Murid {{ $murid->user->name }} Kosong</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Ekskul murid {{ $murid->user->name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover" id="TABLE_3">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Kelas</th>
+                                    <th class="text-center">Menyanyi</th>
+                                    <th class="text-center">Mewarnai</th>
+                                    <th class="text-center">Olahraga</th>
+                                    <th class="text-center">Mengaji</th>
+                                    <th class="text-center">Hafalan Surat Pendek</th>
+                                    <th class="text-center">Hafalan Hadits</th>
+                                    <th class="text-center">Hafalan Doa Sehari-hari</th>
+                                    <th class="text-center">Shalat dan Wudhu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($ekskul as $data)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
+                                    <td class="text-center">{{ $data->eks1 }}</td>
+                                    <td class="text-center">{{ $data->eks2 }}</td>
+                                    <td class="text-center">{{ $data->eks3 }}</td>
+                                    <td class="text-center">{{ $data->eks4 }}</td>
+                                    <td class="text-center">{{ $data->eks5 }}</td>
+                                    <td class="text-center">{{ $data->eks6 }}</td>
+                                    <td class="text-center">{{ $data->eks7 }}</td>
+                                    <td class="text-center">{{ $data->eks8 }}</td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="10" style="font-weight: bold; font-size: 18px;" class="text-center">Data Ekskul Murid {{ $murid->user->name }} Kosong</td>
                                 </tr>
                                 @endforelse
                             </tbody>

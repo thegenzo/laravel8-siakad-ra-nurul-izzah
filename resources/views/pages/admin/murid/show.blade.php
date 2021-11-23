@@ -34,11 +34,18 @@
                 <div class="col-md-7">
                     <h5 class="card-title card-text mb-2">Nama : {{ $murid->user->name }}</h5>
                     <h5 class="card-title card-text mb-2">Murid Kelas : {{ $murid->kelas->nama_kelas }}</h5>
+                    <h5 class="card-title card-text mb-2">NISN : {{ $murid->nisn }}</h5>
+                    <h5 class="card-title card-text mb-2">NIS : {{ $murid->nis }}</h5>
+                    <h5 class="card-title card-text mb-2">NIK : {{ $murid->nik }}</h5>
                     @if ($murid->jk == 'L')
                         <h5 class="card-title card-text mb-2">Jenis Kelamin : Laki-laki</h5>
                     @else
                         <h5 class="card-title card-text mb-2">Jenis Kelamin : Perempuan</h5>
                     @endif
+                    <h5 class="card-title card-text mb-2">Agama : {{ $murid->agama }}</h5>
+                    <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $murid->tempat_lahir }}</h5>
+                    <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ \Carbon\Carbon::parse($murid->tanggal_lahir)->locale('id')->isoFormat('LL') }}</h5>
+                    <h5 class="card-title card-text mb-2">Agama : {{ $murid->agama }}</h5>
                     <h5 class="card-title card-text mb-2">Nama Orang Tua : {{ $murid->nama_ortu }}</h5>
                     <h5 class="card-title card-text mb-2">Pekerjaan Orang Tua : {{ $murid->pekerjaan_ortu }}</h5>
                     <h5 class="card-title card-text mb-2">Alamat : {{ $murid->alamat }}</h5>

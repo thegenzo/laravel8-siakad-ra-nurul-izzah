@@ -2,12 +2,12 @@
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
       <a href="#">
-        <img src="{{ asset('/assets/img/logo.jpg') }}" style="width: 50px; height: 50px;" alt="">
+        <img src="{{ asset('/assets/img/logo.png') }}" style="width: 50px; height: 50px;" alt="">
       </a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
       <a href="#">
-        <img src="{{ asset('/assets/img/logo.jpg') }}" style="width: 50px; height: 50px;" alt="">
+        <img src="{{ asset('/assets/img/logo.png') }}" style="width: 50px; height: 50px;" alt="">
       </a>
     </div>
     <ul class="sidebar-menu">
@@ -30,11 +30,12 @@
           </ul>
         </li>
         <li class="{{ Request::is('pengumuman') ? ' active' : '' }}"><a class="nav-link" href="/pengumuman"><i class="fas fa-pencil-ruler"></i> <span>Pengumuman</span></a></li>
-        <li class="nav-item dropdown {{ Request::is('nilai') || Request::is('sikap') || Request::is('rapor') ? ' active' : '' }}">
+        <li class="nav-item dropdown {{ Request::is('nilai') || Request::is('sikap') || Request::is('ekskul') || Request::is('rapor') ? ' active' : '' }}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Penilaian</span></a>
           <ul class="dropdown-menu">
             <li class="{{ Request::is('nilai') ? ' active' : '' }}"><a class="nav-link" href="{{ route('nilai.index') }}">Nilai</a></li>
             <li class="{{ Request::is('sikap') ? ' active' : '' }}"><a class="nav-link" href="{{ route('sikap.index') }}">Sikap</a></li>
+            <li class="{{ Request::is('ekskul') ? ' active' : '' }}"><a class="nav-link" href="{{ route('ekskul.index') }}">Ekskul</a></li>
             <li class="{{ Request::is('rapor') ? ' active' : '' }}"><a class="nav-link" href="{{ route('rapor.index') }}">Rapor</a></li>
           </ul>
         </li>
