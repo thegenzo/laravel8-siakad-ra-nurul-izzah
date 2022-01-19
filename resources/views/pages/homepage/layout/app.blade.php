@@ -49,7 +49,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-6 col-md-12 footer-contact">
+          <div class="col-md-6 col-sm-12 footer-contact">
             <h3>Alamat</h3>
             <p>
               Jalan Mawaambe, Kota Baubau <br>
@@ -61,7 +61,7 @@
             </p>
           </div>
 
-          <div class="col-lg-6 col-md-6 footer-links">
+          <div class="col-md-6 col-sm-6 footer-links">
             <h4>Pintasan</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>

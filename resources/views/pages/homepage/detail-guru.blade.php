@@ -73,6 +73,15 @@
                     <td>:</td>
                     <td>{{ $guru->no_hp }}</td>
                 </tr>
+                <tr>
+                  <td>Status Kepegawaian</td>
+                  <td>:</td>
+                  @if($guru->status_kepegawaian == '1')
+                  <td>PNS</td>
+                  @else
+                  <td>Non PNS</td>
+                  @endif
+              </tr>
             </table>
           </div>
         </div>

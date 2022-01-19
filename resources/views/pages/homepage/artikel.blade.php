@@ -18,7 +18,7 @@
 
       <div class="row" data-aos="zoom-in" data-aos-delay="100">
         @forelse ($artikel as $data)
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="col-md-4 col-sm-6 d-flex align-items-stretch">
           <div class="course-item">
             <img src="{{ asset('/uploads/artikel/'.$data->sampul_artikel) }}" class="img-fluid" alt="...">
             <div class="course-content">
@@ -28,7 +28,7 @@
           </div>
         </div> <!-- End Course Item-->
         @empty
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+        <div class="col-md-4 col-sm-6 d-flex align-items-stretch">
           <h4 class="text-center">Data Kosong</h4>
         </div>
         @endforelse

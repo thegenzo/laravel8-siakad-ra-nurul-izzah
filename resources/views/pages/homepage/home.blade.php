@@ -61,13 +61,13 @@
         </div>
 
         <div class="col-lg-2 col-6 text-center">
-          <span data-purecounter-start="0" data-purecounter-end="{{ $guru }}" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Guru</p>
+          <span data-purecounter-start="0" data-purecounter-end="{{ $guru + \App\Models\Kepsek::count() + \App\Models\Admin::count() }}" data-purecounter-duration="1" class="purecounter"></span>
+          <p>Jumlah GTK</p>
         </div>
 
         <div class="col-lg-2 col-6 text-center">
           <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Kelas</p>
+          <p>Jumlah Ruangan</p>
         </div>
 
         <div class="col-lg-2 col-6 text-center">
@@ -114,7 +114,7 @@
     </div>
   </section><!-- End Popular Courses Section -->
 
-    <!-- ======= Popular Courses Section ======= -->
+    <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container" data-aos="fade-up">
   

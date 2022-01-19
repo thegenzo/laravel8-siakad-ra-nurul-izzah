@@ -32,7 +32,6 @@ class CreateMuridsTable extends Migration
             $table->unsignedBigInteger('id_kelas');
             $table->foreign('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('no_kk');
             $table->string('nik_ayah');
             $table->string('nik_ibu');
             $table->string('nama_ayah');

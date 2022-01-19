@@ -91,6 +91,13 @@
                         <label for="">Nomor Handphone</label>
                         <input type="number" class="form-control" value="{{ $guru->no_hp }}" name="no_hp" id="no_hp">
                     </div>
+                    <div class="form-group">
+                      <label for="">Status Kepegawaian</label>
+                      <select name="status_kepegawaian" id="status_kepegawaian" class="form-control">
+                        <option value="1" {{ $guru->status_kepegawaian == '1' ? 'selected' : ''}}>PNS</option>
+                        <option value="0" {{ $guru->status_kepegawaian == '0' ? 'selected' : ''}}>Non PNS</option>
+                      </select>
+                    </div>
                 </div>
             </div>
             <a href="{{ url()->previous() }}" class="btn btn-lg btn-warning d-inline">Kembali</a>

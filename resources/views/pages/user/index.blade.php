@@ -29,30 +29,34 @@
               </div>
             </div>
           @endif
-            <form method="POST" action="/akun">
-                @csrf
-                <div class="card-header">
-                  <h4>Ubah Password Anda</h4>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="">Password Lama</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Password Baru</label>
-                        <input type="password" class="form-control" name="password_baru" id="password_baru" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Masukkan Ulang Password Baru</label>
-                        <input type="password" class="form-control" name="password_baru2" id="password_baru2" placeholder="">
-                    </div>
-                </div>
-                <div class="card-footer text-right">
-                  <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-                </div>
-            </form>
-          </div>
+          <form method="POST" action="/akun">
+              @csrf
+              <div class="card-header">
+                <h4>Ubah Password Anda</h4>
+              </div>
+              <div class="card-body">
+                  <div class="form-group">
+                      <label for="">Email Anda</label>
+                      <input type="email" class="form-control" value="{{ auth()->user()->email }}" name="email" id="email" disabled>
+                  </div>
+                  <div class="form-group">
+                      <label for="">Password Lama</label>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Password Baru</label>
+                      <input type="password" class="form-control" name="password_baru" id="password_baru" placeholder="">
+                  </div>
+                  <div class="form-group">
+                      <label for="">Masukkan Ulang Password Baru</label>
+                      <input type="password" class="form-control" name="password_baru2" id="password_baru2" placeholder="">
+                  </div>
+              </div>
+              <div class="card-footer text-right">
+                <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+              </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>

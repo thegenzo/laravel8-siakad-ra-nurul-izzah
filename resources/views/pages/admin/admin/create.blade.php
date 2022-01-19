@@ -84,8 +84,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Nomor Induk Pegawai (NIP)</label>
-                        <input type="number" class="form-control" placeholder="Masukkan NIP" name="nip" id="nip">
+                        <label for="">Nomor Unik Pendidik dan Tenaga Kependidikan (NUPTK)</label>
+                        <input type="number" class="form-control" placeholder="Masukkan NUPTK" name="nip" id="nip">
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>

@@ -51,7 +51,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Nomor Induk Pegawai (NIP)</label>
+                        <label for="">Nomor Unik Pendidik dan Tenaga Kependidikan (NUPTK)</label>
                         <input type="number" class="form-control" value="{{ $guru->nip }}" name="nip" id="nip">
                     </div>
                     <div class="form-group">

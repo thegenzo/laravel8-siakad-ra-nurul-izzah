@@ -38,7 +38,7 @@
                         <th>Nama Admin</th>
                         <th class="text-center">Jenis Kelamin</th>
                         <th class="text-center">Avatar</th>
-                        <th class="text-center">NIP</th>
+                        <th class="text-center">NUPTK</th>
                         <th>Alamat</th>
                         <th class="text-center">Nomor Handphone</th>
                         <th class="text-center">Action</th>

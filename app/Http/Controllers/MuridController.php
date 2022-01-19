@@ -71,7 +71,6 @@ class MuridController extends Controller
             'tempat_lahir'          => 'required|string',
             'tanggal_lahir'         => 'required|date',
             'id_kelas'              => 'required',
-            'no_kk'                 => 'required',
             'nik_ayah'              => 'required|numeric',
             'nik_ibu'               => 'required|numeric',
             'nama_ayah'             => 'required',
@@ -104,7 +103,6 @@ class MuridController extends Controller
             'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
             'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
             'id_kelas.required'             => 'Kelas Wajib Diisi',
-            'no_kk.required'                => 'Nomor Kartu Keluarga Wajib Diisi',
             'nik_ayah.required'             => 'NIK Ayah Wajib Diisi',
             'nik_ibu.required'              => 'NIK Ibu Wajib Diisi',
             'nama_ayah.required'            => 'Nama Ayah Wajib Diisi',
@@ -210,13 +208,12 @@ class MuridController extends Controller
             'name'                  => 'required',
             'nisn'                  => Rule::unique('murids')->ignore($id),
             'nis'                   => Rule::unique('murids')->ignore($id),  
-            'nik'                   => Rule::unique('murids')->ignore($id),       
+            'nik'                   => 'required',Rule::unique('murids')->ignore($id),       
             'jk'                    => 'required',
             'agama'                 => 'required',
             'tempat_lahir'          => 'required|string',
             'tanggal_lahir'         => 'required|date',
             'id_kelas'              => 'required',
-            'no_kk'                 => 'required',
             'nik_ayah'              => 'required|numeric',
             'nik_ibu'               => 'required|numeric',
             'nama_ayah'             => 'required',
@@ -231,9 +228,7 @@ class MuridController extends Controller
 
         $messages = [
             'name.required'                 => 'Nama Wajib Diisi',
-            'nisn.required'                 => 'NISN Wajib Diisi',
             'nisn.unique'                   => 'NISN Sudah Terdaftar',
-            'nis.required'                  => 'NIS Wajib Diisi',
             'nis.unique'                    => 'NIS Sudah Terdaftar',
             'nik.required'                  => 'NIK Wajib Diisi',
             'nik.unique'                    => 'NIK Sudah Terdaftar',
@@ -242,7 +237,6 @@ class MuridController extends Controller
             'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
             'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
             'id_kelas.required'             => 'Kelas Wajib Diisi',
-            'no_kk.required'                => 'Nomor Kartu Keluarga Wajib Diisi',
             'nik_ayah.required'             => 'NIK Ayah Wajib Diisi',
             'nik_ibu.required'              => 'NIK Ibu Wajib Diisi',
             'nama_ayah.required'            => 'Nama Ayah Wajib Diisi',
@@ -271,8 +265,14 @@ class MuridController extends Controller
         $murid->tempat_lahir = $request->tempat_lahir;
         $murid->tanggal_lahir = $request->tanggal_lahir;
         $murid->id_kelas = $request->id_kelas;
-        $murid->nama_ortu = $request->nama_ortu;
-        $murid->pekerjaan_ortu = $request->pekerjaan_ortu;
+        $murid->nik_ayah = $request->nik_ayah;
+        $murid->nik_ibu = $request->nik_ibu;
+        $murid->nama_ayah = $request->nama_ayah;
+        $murid->nama_ibu = $request->nama_ibu;
+        $murid->pekerjaan_ayah = $request->pekerjaan_ayah;
+        $murid->pekerjaan_ibu = $request->pekerjaan_ibu;
+        $murid->pendidikan_ayah = $request->pendidikan_ayah;
+        $murid->pendidikan_ibu = $request->pendidikan_ibu;
         $murid->alamat = $request->alamat;
         $murid->no_hp = $request->no_hp;
         $murid->save();

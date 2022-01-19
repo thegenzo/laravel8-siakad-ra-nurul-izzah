@@ -45,6 +45,21 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Agama</td>
+                    <td>:</td>
+                    <td>{{ $kepsek->agama }}</td>
+                </tr>
+                <tr>
+                    <td>Tempat Lahir</td>
+                    <td>:</td>
+                    <td>{{ $kepsek->tempat_lahir }}</td>
+                </tr>
+                <tr>
+                    <td>Tanggal Lahir</td>
+                    <td>:</td>
+                    <td>{{ \Carbon\Carbon::parse($kepsek->tanggal_lahir)->locale('id')->isoFormat('LL') }}</td>
+                </tr>
+                <tr>
                     <td>Alamat</td>
                     <td>:</td>
                     <td>{{ $kepsek->alamat }}</td>
@@ -53,6 +68,15 @@
                     <td>Nomor Handphone</td>
                     <td>:</td>
                     <td>{{ $kepsek->no_hp }}</td>
+                </tr>
+                <tr>
+                    <td>Status Kepegawaian</td>
+                    <td>:</td>
+                    @if($kepsek->status_kepegawaian == '1')
+                    <td>PNS</td>
+                    @else
+                    <td>Non PNS</td>
+                    @endif
                 </tr>
             </table>
 

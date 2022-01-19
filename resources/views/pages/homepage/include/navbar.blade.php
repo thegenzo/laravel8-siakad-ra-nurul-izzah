@@ -16,7 +16,7 @@
             <li><a href="/struktur-organisasi">Struktur Organisasi</a></li>
           </ul>
         </li>
-        <li><a class="{{ Request::is('data-guru') ? 'active' : '' }}" href="/data-guru">Data Guru</a></li>
+        <li><a class="{{ Request::is('data-guru') ? 'active' : '' }}" href="/data-guru">Data GTK</a></li>
         <li><a class="{{ Request::is('baca-artikel') ? 'active' : '' }}" href="/baca-artikel">Baca Artikel</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>

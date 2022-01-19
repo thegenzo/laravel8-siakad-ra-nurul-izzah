@@ -221,6 +221,7 @@ class GuruController extends Controller
         $guru->id_kelas = $request->id_kelas;
         $guru->alamat = $request->alamat;
         $guru->no_hp = $request->no_hp;
+        $guru->status_kepegawaian = $request->status_kepegawaian;
         $guru->save();
 
         $user = User::find($guru->id_user);

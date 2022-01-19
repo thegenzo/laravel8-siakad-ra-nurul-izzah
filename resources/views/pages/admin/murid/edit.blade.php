@@ -99,12 +99,6 @@
               </div>
               <div class="card-body">
                   <div class="row">
-                      <div class="col-sm-12">
-                          <div class="form-group">
-                              <label for="">Nomor Kartu Keluarga</label>
-                              <input type="number" class="form-control" name="no_kk" id="no_kk" value="{{ $murid->no_kk }}">
-                          </div>
-                      </div>
                       <div class="col-sm-6">
                           <div class="form-group">
                               <label for="">NIK Ayah</label>
@@ -156,7 +150,7 @@
                       </div>
                   </div>
               </div>
-          </div>
+            </div>
             <a href="{{ route('murid.index') }}" class="btn btn-lg btn-warning d-inline">Kembali</a>
             <button class="btn btn-success">Simpan</button>
         </form>

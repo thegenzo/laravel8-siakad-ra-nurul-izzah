@@ -77,6 +77,51 @@
                   <td>:</td>
                   <td>RA</td>
               </tr>
+              <tr>
+                <td>Tahun Berdiri</td>
+                <td>:</td>
+                <td>2003</td>
+              </tr>
+              <tr>
+                <td>Akta Pendiri Yayasan</td>
+                <td>:</td>
+                <td>03</td>
+              </tr>
+              <tr>
+                <td>SK IZIN OPERASIONAL</td>
+                <td>:</td>
+                <td>264a.2011 tanggal 1 Juni 2011</td>
+              </tr>
+              <tr>
+                <td>Tanggal SK Izin Operasional</td>
+                <td>:</td>
+                <td>2011-06-01</td>
+              </tr>
+              <tr>
+                <td>SK KEMENKUMHAM</td>
+                <td>:</td>
+                <td>AHU-0033129.AH.01.04.Tahun 2016</td>
+              </tr>
+              <tr>
+                <td>Tanggal SK KEMENKUMHAM</td>
+                <td>:</td>
+                <td>Tanggal 23 Agt 2016</td>
+              </tr>
+              <tr>
+                <td>Status Kelompok Kerja Madrasah (KKM)</td>
+                <td>:</td>
+                <td>Tidak Masuk KKM</td>
+              </tr>
+              <tr>
+                <td>Komite Lembaga</td>
+                <td>:</td>
+                <td>Sudah Terbentuk</td>
+              </tr>
+              <tr>
+                <td>Kategori Madrasah</td>
+                <td>:</td>
+                <td>Madrasah Akademik (MAN IC)</td>
+              </tr>
           </table>
 
         </div>

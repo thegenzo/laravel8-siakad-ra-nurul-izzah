@@ -51,8 +51,32 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="">Nomor Induk Pegawai (NIP)</label>
+                      <label for="">Nomor Induk Keluarga (NIK)</label>
+                      
+                      <input type="number" class="form-control" name="nik" id="nik" value="{{ $kepsek->nik}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Nomor Unik Pendidik dan Tenaga Kependidikan (NUPTK)</label>
                         <input type="number" class="form-control" value="{{ $kepsek->nip }}" name="nip" id="nip">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tempat Lahir</label>
+                        <input type="text" class="form-control" value="{{ $kepsek->tempat_lahir }}" name="tempat_lahir" id="tempat_lahir">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Tanggal Lahir</label>
+                        <input type="date" class="form-control" value="{{ $kepsek->tanggal_lahir }}" name="tanggal_lahir" id="tanggal_lahir">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Agama</label>
+                      <select name="agama" id="agama" class="form-control">
+                        <option value="" selected hidden>Pilih Agama</option>
+                        <option value="Islam" {{ $kepsek->agama == 'Islam' ? 'selected' : '' }}>Islam</option>
+                        <option value="Kristen Protestan" {{ $kepsek->agama == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
+                        <option value="Kristen Katolik" {{ $kepsek->agama == 'Kristen Katolik' ? 'selected' : '' }}>Kristen Katolik</option>
+                        <option value="Hindu" {{ $kepsek->agama == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                        <option value="Buddha" {{ $kepsek->agama == 'Buddha' ? 'selected' : '' }}>Buddha</option>
+                    </select>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat</label>

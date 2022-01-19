@@ -123,6 +123,13 @@
                         <label for="">Nomor Handphone</label>
                         <input type="number" class="form-control" placeholder="Masukkan Nomor Handphone" name="no_hp" id="no_hp">
                     </div>
+                    <div class="form-group">
+                      <label for="">Status Kepegawaian</label>
+                      <select name="status_kepegawaian" id="status_kepegawaian" class="form-control">
+                        <option value="1">PNS</option>
+                        <option value="0">Non PNS</option>
+                      </select>
+                    </div>
                 </div>
             </div>
             <a href="{{ route('guru.index') }}" class="btn btn-lg btn-warning d-inline">Kembali</a>

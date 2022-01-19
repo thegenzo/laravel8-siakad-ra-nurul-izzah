@@ -157,7 +157,11 @@ class KepsekController extends Controller
         $rules = [
             'name'                  => 'required',
             'jk'                    => 'required',
+            'nik'                   => 'required|numeric',
             'nip'                   => 'required|numeric',
+            'tempat_lahir'          => 'required',
+            'tanggal_lahir'         => 'required',
+            'agama'                 => 'required',
             'alamat'                => 'required',
             'no_hp'                 => 'required|numeric'
         ];
@@ -165,8 +169,12 @@ class KepsekController extends Controller
         $messages = [
             'name.required'                 => 'Nama Wajib Diisi',
             'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
+            'nik.required'                  => 'NIK Wajib Diisi', 
             'nip.required'                  => 'NIP Wajib Diisi',
             'nip.numeric'                   => 'NIP Harus Berupa Angka',
+            'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
+            'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
+            'agama.required'                => 'Agama Wajib Diisi',
             'alamat.required'               => 'Alamat Wajib Diisi',
             'no_hp.required'                => 'Nomor Handphone Wajib Diisi',
             'no_hp.numeric'                 => 'Nomor Handphone Harus Berupa Angka'                 
@@ -180,7 +188,11 @@ class KepsekController extends Controller
 
         $kepsek = Kepsek::find($id);
         $kepsek->jk = $request->jk;
+        $kepsek->nik = $request->nik;
         $kepsek->nip = $request->nip;
+        $kepsek->tempat_lahir = $request->tempat_lahir;
+        $kepsek->tanggal_lahir = $request->tanggal_lahir;
+        $kepsek->agama = $request->agama;
         $kepsek->alamat = $request->alamat;
         $kepsek->no_hp = $request->no_hp;
         $kepsek->save();

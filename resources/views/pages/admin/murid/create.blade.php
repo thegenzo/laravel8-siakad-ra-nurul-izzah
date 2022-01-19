@@ -133,12 +133,6 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="">Nomor Kartu Keluarga</label>
-                                <input type="number" class="form-control" name="no_kk" id="no_kk" placeholder="Masukkan Nomor Kartu Keluarga">
-                            </div>
-                        </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="">NIK Ayah</label>

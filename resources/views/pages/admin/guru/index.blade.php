@@ -35,6 +35,7 @@
               <thead>
                   <tr>
                       <th class="text-center">No</th>
+                      <th class="text-center">Status Kepegawaian</th>
                       <th>Nama Guru</th>
                       <th class="text-center">Jenis Kelamin</th>
                       <th class="text-center">Avatar</th>
@@ -48,6 +49,11 @@
                   @forelse ($guru as $data)
                   <tr>
                       <td class="text-center">{{ $loop->iteration }}</td>
+                      @if($data->status_kepegawaian == '1')
+                      <td class="text-center"><span class="badge badge-primary">PNS</span></td>
+                      @else
+                      <td class="text-center"><span class="badge badge-danger">Non PNS</span></td>
+                      @endif
                       <td>{{ $data->user->name }}</td>
                       <td class="text-center">{{ $data->jk }}</td>
                       <td class="text-center">

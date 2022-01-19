@@ -77,7 +77,11 @@ class UserController extends Controller
             $rules = [
                 'name'                  => 'required',
                 'jk'                    => 'required',
+                'nik'                   => 'required|numeric',
                 'nip'                   => 'required|numeric',
+                'tempat_lahir'          => 'required',
+                'tanggal_lahir'         => 'required',
+                'agama'                 => 'required',
                 'alamat'                => 'required',
                 'no_hp'                 => 'required|numeric'
             ];
@@ -85,8 +89,12 @@ class UserController extends Controller
             $messages = [
                 'name.required'                 => 'Nama Wajib Diisi',
                 'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
+                'nik.required'                  => 'NIK Wajib Diisi', 
                 'nip.required'                  => 'NIP Wajib Diisi',
                 'nip.numeric'                   => 'NIP Harus Berupa Angka',
+                'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
+                'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
+                'agama.required'                => 'Agama Wajib Diisi',
                 'alamat.required'               => 'Alamat Wajib Diisi',
                 'no_hp.required'                => 'Nomor Handphone Wajib Diisi',
                 'no_hp.numeric'                 => 'Nomor Handphone Harus Berupa Angka'                 
@@ -100,7 +108,11 @@ class UserController extends Controller
 
             $kepsek = Kepsek::where('id_user', auth()->user()->id)->first();
             $kepsek->jk = $request->jk;
+            $kepsek->nik = $request->nik;
             $kepsek->nip = $request->nip;
+            $kepsek->tempat_lahir = $request->tempat_lahir;
+            $kepsek->tanggal_lahir = $request->tanggal_lahir;
+            $kepsek->agama = $request->agama;
             $kepsek->alamat = $request->alamat;
             $kepsek->no_hp = $request->no_hp;
             $kepsek->save();
@@ -146,22 +158,43 @@ class UserController extends Controller
         } else if(auth()->user()->level == 'murid') {
             $rules = [
                 'name'                  => 'required',
+                'nisn'                  => Rule::unique('murids')->ignore(Murid::where('id_user', auth()->user()->id)->first()),
+                'nis'                   => Rule::unique('murids')->ignore(Murid::where('id_user', auth()->user()->id)->first()),  
+                'nik'                   => 'required',Rule::unique('murids')->ignore(Murid::where('id_user', auth()->user()->id)->first()),       
                 'jk'                    => 'required',
+                'agama'                 => 'required',
                 'tempat_lahir'          => 'required|string',
                 'tanggal_lahir'         => 'required|date',
-                'nama_ortu'             => 'required',
-                'pekerjaan_ortu'        => 'required',
+                'nik_ayah'              => 'required|numeric',
+                'nik_ibu'               => 'required|numeric',
+                'nama_ayah'             => 'required',
+                'nama_ibu'              => 'required',
+                'pekerjaan_ayah'        => 'required',
+                'pekerjaan_ibu'         => 'required',
+                'pendidikan_ayah'       => 'required',
+                'pendidikan_ibu'        => 'required',
                 'alamat'                => 'required',
                 'no_hp'                 => 'required|numeric'
             ];
     
             $messages = [
                 'name.required'                 => 'Nama Wajib Diisi',
+                'nisn.unique'                   => 'NISN Sudah Terdaftar',
+                'nis.unique'                    => 'NIS Sudah Terdaftar',
+                'nik.required'                  => 'NIK Wajib Diisi',
+                'nik.unique'                    => 'NIK Sudah Terdaftar',
                 'jk.required'                   => 'Jenis Kelamin Wajib Diisi',
+                'agama.required'                => 'Agama Wajib Diisi',
                 'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
                 'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
-                'nama_ortu.required'            => 'Nama Orang Tua Wajib Diisi',
-                'pekerjaan_ortu.required'       => 'Pekerjaan Tua Wajib Diisi',
+                'nik_ayah.required'             => 'NIK Ayah Wajib Diisi',
+                'nik_ibu.required'              => 'NIK Ibu Wajib Diisi',
+                'nama_ayah.required'            => 'Nama Ayah Wajib Diisi',
+                'nama_ibu.required'             => 'Nama Ibu Wajib Diisi',
+                'pekerjaan_ayah.required'       => 'Pekerjaan Ayah Wajib Diisi',
+                'pekerjaan_ibu.required'        => 'Pekerjaan Ibu Wajib Diisi',
+                'pendidikan_ayah.required'      => 'Pendidikan Ayah Wajib Diisi',
+                'pendidikan_ibu.required'       => 'Pendidikan Ibu Wajib Diisi',   
                 'alamat.required'               => 'Alamat Wajib Diisi',
                 'no_hp.required'                => 'Nomor Handphone Wajib Diisi',
                 'no_hp.numeric'                 => 'Nomor Handphone Harus Berupa Angka'                 
@@ -172,16 +205,27 @@ class UserController extends Controller
             if($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput($request->all());
             }
+    
             $murid = Murid::where('id_user', auth()->user()->id)->first();
+            $murid->nisn = $request->nisn;
+            $murid->nis = $request->nis;
+            $murid->nik = $request->nik;
             $murid->jk = $request->jk;
+            $murid->agama = $request->agama;
             $murid->tempat_lahir = $request->tempat_lahir;
             $murid->tanggal_lahir = $request->tanggal_lahir;
-            $murid->nama_ortu = $request->nama_ortu;
-            $murid->pekerjaan_ortu = $request->pekerjaan_ortu;
+            $murid->nik_ayah = $request->nik_ayah;
+            $murid->nik_ibu = $request->nik_ibu;
+            $murid->nama_ayah = $request->nama_ayah;
+            $murid->nama_ibu = $request->nama_ibu;
+            $murid->pekerjaan_ayah = $request->pekerjaan_ayah;
+            $murid->pekerjaan_ibu = $request->pekerjaan_ibu;
+            $murid->pendidikan_ayah = $request->pendidikan_ayah;
+            $murid->pendidikan_ibu = $request->pendidikan_ibu;
             $murid->alamat = $request->alamat;
             $murid->no_hp = $request->no_hp;
             $murid->save();
-
+    
             $user = User::find($murid->id_user);
             $user->name = $request->name;
             $user->save();

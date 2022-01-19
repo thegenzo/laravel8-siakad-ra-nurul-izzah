@@ -21,9 +21,14 @@ class CreateKepseksTable extends Migration
             $table->foreign('id_user')->references('id')->on('users')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
             $table->enum('jk', ['L', 'P']);
+            $table->string('nik');
             $table->string('nip')->unique();
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->string('agama');
             $table->text('alamat');
             $table->string('no_hp');
+            $table->enum('status_kepegawaian', ['1', '0']);
             $table->timestamps();
         });
     }

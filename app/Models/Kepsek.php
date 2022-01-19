@@ -11,7 +11,7 @@ class Kepsek extends Model
 
     protected $table = 'kepseks';
 
-    protected $fillable = ['id_user', 'jk', 'nip', 'alamat', 'no_hp'];
+    protected $fillable = ['id_user', 'jk', 'nik', 'nip', 'tanggal_lahir', 'tempat_lahir', 'agama', 'alamat', 'no_hp', 'status_kepegawaian'];
 
     public function user()
     {

@@ -31,6 +31,8 @@ class CreateGurusTable extends Migration
             // relasi tabel gurus dan kelas
             $table->unsignedBigInteger('id_kelas');
             $table->foreign('id_kelas')->references('id')->on('kelas')->constrained()->onDelete('cascade')->onUpdate('cascade');
+
+            $table->enum('status_kepegawaian', ['1', '0']);
             
             $table->timestamps();
         });

@@ -1,6 +1,6 @@
 @extends('pages.homepage.layout.app')
 
-@section('title', 'Data Guru')
+@section('title', 'Data GTK')
 
 @section('content')
 <main id="main" data-aos="fade-in">
@@ -8,7 +8,7 @@
   <!-- ======= Breadcrumbs ======= -->
   <div class="breadcrumbs">
     <div class="container">
-      <h2>Data Guru</h2>
+      <h2>Data GTK</h2>
     </div>
   </div><!-- End Breadcrumbs -->
 
