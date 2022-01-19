@@ -36,6 +36,7 @@
                     <tr>
                         <th class="text-center">No</th>
                         <th>Ruang Kelas</th>
+                        <th class="text-center">Jumlah Murid</th>
                         <th class="text-center">Lihat Murid</th>
                     </tr>
                 </thead>
@@ -44,6 +45,7 @@
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $data->nama_kelas }}</td>
+                        <td class="text-center">{{ \App\Models\Murid::where('id_kelas', $data->id)->where('status_lulus', '0')->count() }}</td>
                         <td class="text-center">
                             <a href="{{ route('murid.kelas', $data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Murid">
                                 <i class="fas fa-eye" ></i>
@@ -55,6 +57,18 @@
                         <td colspan="3" style="font-weight: bold; font-size: 18px;" class="text-center">Data Kelas Kosong</td>
                     </tr>
                     @endforelse
+                    
+                    <!-- baris untuk murid yang belum memiliki kelas -->
+                    <tr>
+                        <td class="text-center">{{ \App\Models\Kelas::count() + 1 }}</td>
+                        <td>Belum memiliki kelas</td>
+                        <td class="text-center">{{ \App\Models\Murid::where('id_kelas', null)->where('status_lulus', '0')->count() }}</td>
+                        <td class="text-center">
+                            <a href="pilih-kelas" class="btn btn-info" data-toggle="tooltip" data-placement="top" title="Lihat Murid">
+                              <i class="fas fa-eye" ></i>
+                            </a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
           </div>

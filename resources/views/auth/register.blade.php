@@ -116,15 +116,6 @@
                               <label for="">Tanggal Lahir</label>
                               <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
                           </div>
-                          <div class="form-group">
-                              <label for="">Kelas</label>
-                              <select name="id_kelas" id="id_kelas" class="form-control">
-                                  <option value="" selected hidden>Pilih Kelas</option>
-                                  @foreach ($kelas as $data)
-                                  <option value="{{ $data->id }}">{{ $data->nama_kelas }}</option>
-                                  @endforeach
-                              </select>
-                          </div>
                       </div>
                   </div>
                   <div class="card">
@@ -146,12 +137,22 @@
     
                                 <div class="form-group">
                                     <label for="">Pekerjaan Ayah</label>
-                                    <input type="text" class="form-control" name="pekerjaan_ayah" id="pekerjaan_ayah" placeholder="Masukkan Pekerjaan Ayah">
+                                    <select name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control">
+                                        <option value="" selected hidden>Pilih Pekerjaan Ayah</option>
+                                        @foreach($pekerjaan as $data)
+                                        <option value="{{ $data->nama_pekerjaan }}">{{ $data->nama_pekerjaan }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
     
                                 <div class="form-group">
                                     <label for="">Pendidikan Ayah</label>
-                                    <input type="text" class="form-control" name="pendidikan_ayah" id="pendidikan_ayah" placeholder="Masukkan Pendidikan Ayah">
+                                    <select name="pendidikan_ayah" id="pendidikan_ayah" class="form-control">
+                                        <option value="" selected hidden>Pilih Pendidikan Ayah</option>
+                                        @foreach($pendidikan as $data)
+                                        <option value="{{ $data->nama_pendidikan }}">{{ $data->nama_pendidikan }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
     
                                 <div class="form-group">
@@ -171,11 +172,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Pekerjaan Ibu</label>
-                                    <input type="text" class="form-control" name="pekerjaan_ibu" id="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu">
+                                    <select name="pekerjaan_ibu" id="pekerjaan_ibu" class="form-control">
+                                        <option value="" selected hidden>Pilih Pekerjaan Ibu</option>
+                                        @foreach($pekerjaan as $data)
+                                        <option value="{{ $data->nama_pekerjaan }}">{{ $data->nama_pekerjaan }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Pendidikan Ibu</label>
-                                    <input type="text" class="form-control" name="pendidikan_ibu" id="pendidikan_ibu" placeholder="Masukkan Pendidikan Ibu">
+                                    <select name="pendidikan_ibu" id="pendidikan_ibu" class="form-control">
+                                        <option value="" selected hidden>Pilih Pendidikan Ibu</option>
+                                        @foreach($pendidikan as $data)
+                                        <option value="{{ $data->nama_pendidikan }}">{{ $data->nama_pendidikan }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nomor Handphone</label>

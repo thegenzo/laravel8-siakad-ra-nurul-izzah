@@ -45,8 +45,12 @@
                     <h5 class="card-title card-text mb-2">Agama : {{ $murid->agama }}</h5>
                     <h5 class="card-title card-text mb-2">Tempat Lahir : {{ $murid->tempat_lahir }}</h5>
                     <h5 class="card-title card-text mb-2">Tanggal Lahir : {{ \Carbon\Carbon::parse($murid->tanggal_lahir)->locale('id')->isoFormat('LL') }}</h5>
-                    <h5 class="card-title card-text mb-2">Nama Orang Tua : {{ $murid->nama_ortu }}</h5>
-                    <h5 class="card-title card-text mb-2">Pekerjaan Orang Tua : {{ $murid->pekerjaan_ortu }}</h5>
+                    <h5 class="card-title card-text mb-2">Nama Ayah : {{ $murid->nama_ayah }}</h5>
+                    <h5 class="card-title card-text mb-2">Pekerjaan Ayah : {{ $murid->pekerjaan_ayah }}</h5>
+                    <h5 class="card-title card-text mb-2">Pendidikan Ayah : {{ $murid->pendidikan_ayah }}</h5>
+                    <h5 class="card-title card-text mb-2">Nama Ibu : {{ $murid->nama_ibu }}</h5>
+                    <h5 class="card-title card-text mb-2">Pekerjaan Ibu : {{ $murid->pekerjaan_ibu }}</h5>
+                    <h5 class="card-title card-text mb-2">Pendidikan Ibu : {{ $murid->pendidikan_ibu }}</h5>
                     <h5 class="card-title card-text mb-2">Alamat : {{ $murid->alamat }}</h5>
                     <h5 class="card-title card-text mb-2">Nomor Handphone : {{ $murid->no_hp }}</h5>
                 </div>

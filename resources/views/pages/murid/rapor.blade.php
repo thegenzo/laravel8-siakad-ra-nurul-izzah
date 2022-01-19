@@ -18,7 +18,7 @@ Nilai Murid
       <div class="section-header-breadcrumb">
         <div class="breadcrumb-item"><a href="#">Dashboard</a></div>
         <div class="breadcrumb-item"><a href="#">Nilai</a></div>
-        <div class="breadcrumb-item">Nilai Kelas {{ $murid->kelas->nama_kelas }}</div>
+        <div class="breadcrumb-item">Nilai Kelas {{ $murid->kelas->nama_kelas ?? '...' }}</div>
         <div class="breadcrumb-item active">Nilai Murid</div>
       </div>
     </div>
@@ -70,7 +70,7 @@ Nilai Murid
                     <tr>
                         <td>Kelas</td>
                         <td>:</td>
-                        <td>{{ $murid->kelas->nama_kelas }}</td>
+                        <td>{{ $murid->kelas->nama_kelas ?? 'Kelas belum ada' }}</td>
                     </tr>
                 </table>
             </div>
@@ -100,7 +100,7 @@ Nilai Murid
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->mapel->nama_mapel }}</td>
-                                    <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
+                                    <td class="text-center">{{ $data->kelas->nama_kelas ?? 'Kelas belum ada' }}</td>
                                     <td class="text-center">{{ $data->tes1 }}</td>
                                     <td class="text-center">{{ $data->tes2 }}</td>
                                     <td class="text-center">{{ $data->tes3 }}</td>
@@ -139,7 +139,7 @@ Nilai Murid
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $data->mapel->nama_mapel }}</td>
-                                    <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
+                                    <td class="text-center">{{ $data->kelas->nama_kelas ?? 'Kelas belum ada' }}</td>
                                     <td class="text-center">{{ $data->sikap1 }}</td>
                                     <td class="text-center">{{ $data->sikap2 }}</td>
                                     <td class="text-center">{{ $data->sikap3 }}</td>
@@ -181,7 +181,7 @@ Nilai Murid
                                 @forelse ($ekskul as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center">{{ $data->kelas->nama_kelas }}</td>
+                                    <td class="text-center">{{ $data->kelas->nama_kelas ?? 'Kelas belum ada' }}</td>
                                     <td class="text-center">{{ $data->eks1 }}</td>
                                     <td class="text-center">{{ $data->eks2 }}</td>
                                     <td class="text-center">{{ $data->eks3 }}</td>

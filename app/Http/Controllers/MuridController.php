@@ -10,6 +10,8 @@ use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Murid;
 use App\Models\Ekskul;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -45,8 +47,10 @@ class MuridController extends Controller
     public function create()
     {
         $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
+        $pekerjaan = Pekerjaan::all();
+        $pendidikan = Pendidikan::all();
 
-        return view('pages.admin.murid.create', compact('kelas'));
+        return view('pages.admin.murid.create', compact('kelas', 'pekerjaan', 'pendidikan'));
     }
 
     /**
@@ -191,8 +195,10 @@ class MuridController extends Controller
     {
         $murid = Murid::find($id);
         $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
+        $pekerjaan = Pekerjaan::all();
+        $pendidikan = Pendidikan::all();
 
-        return view('pages.admin.murid.edit', compact('murid', 'kelas'));
+        return view('pages.admin.murid.edit', compact('murid', 'kelas', 'pekerjaan', 'pendidikan'));
     }
 
     /**
@@ -315,6 +321,7 @@ class MuridController extends Controller
         }
     }
 
+    // untuk melihat murid alumni
     public function alumni()
     {
         $alumni = Murid::where('status_lulus', 1)->get();
@@ -322,12 +329,18 @@ class MuridController extends Controller
         return view('pages.admin.murid.alumni', compact('alumni'));
     }
 
+    // melihat rapor alumni
     public function alumni_rapor($id)
     {
         $rapor = Rapor::where('id_murid', $id)->get();
         $murid = Murid::where('id', $id)->first();
         return view('pages.admin.murid.alumni-rapor', compact('rapor', 'murid'));
     }
+
+    // nilai_saya
+    // sikap_saya
+    // rapor_saya
+    // diakses oleh user dengan level murid untuk mengecek nilai, sikap dan rapor
 
     public function nilai_saya()
     {
@@ -358,4 +371,29 @@ class MuridController extends Controller
 
         return view('pages.murid.rapor', compact('rapor', 'nilai', 'sikap', 'murid', 'ekskul'));
     }
+
+    // pilih_kelas
+    // update_kelas
+    // untuk membagi kelas murid yang belum memiliki kelas belajar
+
+    public function pilih_kelas()
+    {
+        $murid = Murid::where('id_kelas', null)->where('status_lulus', '0')->get();
+        $kelas = Kelas::all();
+
+        return view('pages.admin.murid.pilih-kelas', compact('murid', 'kelas'));
+    }
+
+    public function update_kelas(Request $request, $id)
+    {
+        $murid = Murid::find($id);
+        $murid->id_kelas = $request->id_kelas;
+        $murid->save();
+
+        Alert::success('Berhasil', 'Kelas Berhasil Dipilih');
+
+        return back();
+    }
+
+
 }

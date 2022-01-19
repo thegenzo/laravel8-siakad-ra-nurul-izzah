@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Kelas;
 use App\Models\User;
 use App\Models\Murid;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -15,8 +16,9 @@ class RegisterController extends Controller
 {
     public function registrasiMurid()
     {
-        $kelas = Kelas::orderBy('nama_kelas', 'asc')->get();
-        return view('auth.register', compact('kelas'));
+        $pekerjaan = Pekerjaan::all();
+        $pendidikan = Pendidikan::all();
+        return view('auth.register', compact('pekerjaan', 'pendidikan'));
     }
 
     public function enroll(Request $request)
@@ -34,7 +36,6 @@ class RegisterController extends Controller
             'agama'                 => 'required',
             'tempat_lahir'          => 'required|string',
             'tanggal_lahir'         => 'required|date',
-            'id_kelas'              => 'required',
             'nik_ayah'              => 'required|numeric',
             'nik_ibu'               => 'required|numeric',
             'nama_ayah'             => 'required|string',
@@ -66,7 +67,6 @@ class RegisterController extends Controller
             'agama.required'                => 'Agama Wajib Diisi',
             'tempat_lahir.required'         => 'Tempat Lahir Wajib Diisi',
             'tanggal_lahir.required'        => 'Tanggal Lahir Wajib Diisi',
-            'id_kelas.required'             => 'Kelas Wajib Diisi',
             'nik_ayah.required'             => 'NIK Ayah Wajib Diisi',
             'nik_ibu.required'              => 'NIK Ibu Wajib Diisi',
             'nama_ayah.required'            => 'Nama Ayah Wajib Diisi',

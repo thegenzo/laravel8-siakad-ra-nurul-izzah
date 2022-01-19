@@ -63,30 +63,44 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek']], function() {
     Route::get('/admin-dashboard', [DashboardController::class, 'adminDashboard']);
 
     Route::resource('admin', AdminController::class);
+    
     Route::resource('guru', GuruController::class);
     Route::get('/guru/kelas/{id}', [GuruController::class, 'kelas'])->name('guru.kelas');
+    
     Route::resource('murid', MuridController::class);
     Route::get('/murid/kelas/{id}', [MuridController::class, 'kelas'])->name('murid.kelas');
+    
     Route::resource('mapel', MapelController::class);
+    
     Route::resource('jadwal', JadwalController::class);
     Route::get('/jadwal/kelas/{id}', [JadwalController::class, 'kelas'])->name('jadwal.kelas');
+    
     Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
     Route::post('/pengumuman', [PengumumanController::class, 'update'])->name('pengumuman.update');
+   
     Route::resource('nilai', NilaiController::class);
     Route::get('/nilai/kelas/{id}', [NilaiController::class, 'kelas'])->name('nilai.kelas');
     Route::get('/nilai/murid/{id}', [NilaiController::class, 'murid'])->name('nilai.murid');
+    
     Route::resource('sikap', SikapController::class);
     Route::get('/sikap/kelas/{id}', [SikapController::class, 'kelas'])->name('sikap.kelas');
     Route::get('/sikap/murid/{id}', [SikapController::class, 'murid'])->name('sikap.murid');
+    
     Route::resource('ekskul', EkskulController::class);
     Route::get('/ekskul/kelas/{id}', [EkskulController::class, 'kelas'])->name('ekskul.kelas');
     Route::get('/ekskul/murid/{id}', [EkskulController::class, 'murid'])->name('ekskul.murid');
+    
     Route::resource('rapor', RaporController::class);
     Route::get('/rapor/kelas/{id}', [RaporController::class, 'kelas'])->name('rapor.kelas');
     Route::get('/rapor/kelas/{idKelas}/murid/{id}', [RaporController::class, 'murid'])->name('rapor.murid');
     Route::put('/rapor/kelas/{idKelas}/murid/{id}', [RaporController::class, 'postRapor']);
+    
     Route::get('/alumni', [MuridController::class, 'alumni']);
     Route::get('/alumni/{id}', [MuridController::class, 'alumni_rapor']);
+
+    Route::get('pilih-kelas', [MuridController::class, 'pilih_kelas']);
+    Route::put('update-kelas/{id}', [MuridController::class, 'update_kelas']);
+
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek,guru']], function() {

@@ -112,12 +112,20 @@
 
                           <div class="form-group">
                               <label for="">Pekerjaan Ayah</label>
-                              <input type="text" class="form-control" name="pekerjaan_ayah" id="pekerjaan_ayah" value="{{ $murid->pekerjaan_ayah }}">
+                              <select name="pekerjaan_ayah" id="pekerjaan_ayah" class="form-control">
+                                  @foreach($pekerjaan as $data)
+                                  <option value="{{ $data->nama_pekerjaan }}" {{ $data->nama_pekerjaan == $murid->pekerjaan_ayah ? 'selected' : '' }}>{{ $data->nama_pekerjaan }}</option>
+                                  @endforeach
+                              </select>
                           </div>
 
                           <div class="form-group">
                               <label for="">Pendidikan Ayah</label>
-                              <input type="text" class="form-control" name="pendidikan_ayah" id="pendidikan_ayah" value="{{ $murid->pendidikan_ayah }}">
+                              <select name="pendidikan_ayah" id="pendidikan_ayah" class="form-control">
+                                  @foreach($pendidikan as $data)
+                                  <option value="{{ $data->nama_pendidikan }}" {{ $data->nama_pendidikan == $murid->pendidikan_ayah ? 'selected' : '' }}>{{ $data->nama_pendidikan }}</option>
+                                  @endforeach
+                              </select>
                           </div>
 
                           <div class="form-group">
@@ -137,11 +145,19 @@
                           </div>
                           <div class="form-group">
                               <label for="">Pekerjaan Ibu</label>
-                              <input type="text" class="form-control" name="pekerjaan_ibu" id="pekerjaan_ibu" value="{{ $murid->pekerjaan_ibu }}">
+                              <select name="pekerjaan_ibu" id="pekerjaan_ibu" class="form-control">
+                                  @foreach($pekerjaan as $data)
+                                  <option value="{{ $data->nama_pekerjaan }}" {{ $data->pekerjaan_ibu == $murid->pekerjaan_ibu ? 'selected' : '' }}>{{ $data->nama_pekerjaan }}</option>
+                                  @endforeach
+                              </select>
                           </div>
                           <div class="form-group">
                               <label for="">Pendidikan Ibu</label>
-                              <input type="text" class="form-control" name="pendidikan_ibu" id="pendidikan_ibu" value="{{ $murid->pendidikan_ibu }}">
+                              <select name="pendidikan_ibu" id="pendidikan_ibu" class="form-control">
+                                  @foreach($pendidikan as $data)
+                                  <option value="{{ $data->nama_pendidikan }}" {{ $data->nama_pendidikan == $murid->pendidikan_ibu ? 'selected' : '' }}>{{ $data->nama_pendidikan }}</option>
+                                  @endforeach
+                              </select>
                           </div>
                           <div class="form-group">
                               <label for="">Nomor Handphone</label>

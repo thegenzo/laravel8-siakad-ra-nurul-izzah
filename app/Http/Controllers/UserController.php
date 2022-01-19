@@ -8,6 +8,8 @@ use App\Models\Admin;
 use App\Models\Kepsek;
 use App\Models\Guru;
 use App\Models\Murid;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -29,7 +31,9 @@ class UserController extends Controller
             return view('pages.profil.guru.index', compact('guru'));
         } else if(auth()->user()->level == 'murid') {
             $murid = Murid::where('id_user', auth()->user()->id)->first();
-            return view('pages.profil.murid.index', compact('murid'));
+            $pekerjaan = Pekerjaan::all();
+            $pendidikan = Pendidikan::all();
+            return view('pages.profil.murid.index', compact('murid', 'pekerjaan', 'pendidikan'));
         }
     }
 
